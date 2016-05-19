@@ -1,3 +1,4 @@
+aldeed:simple-schema@1.5.3
 allow-deny@1.0.3
 autoupdate@1.2.7
 babel-compiler@6.6.1
@@ -22,6 +23,8 @@ ecmascript-runtime@0.2.9
 ejson@1.0.10
 es5-shim@4.5.9
 fastclick@1.0.10
+fortawesome:fontawesome@4.4.0_1
+fourseven:scss@3.3.3_3
 geojson-utils@1.0.7
 hot-code-push@1.0.3
 html-tools@1.0.8
@@ -32,6 +35,7 @@ jquery@1.11.7
 launch-screen@1.0.10
 livedata@1.0.17
 logging@1.0.11
+mdg:validation-error@0.2.0
 meteor@1.1.13
 meteor-base@1.0.3
 minifier-css@1.1.10
@@ -48,16 +52,22 @@ observe-sequence@1.0.10
 ordered-dict@1.0.6
 promise@0.6.6
 random@1.0.8
+react-meteor-data@0.2.9
+reactive-dict@1.1.6
 reactive-var@1.0.8
 reload@1.1.7
 retry@1.0.6
 routepolicy@1.0.9
+session@1.1.4
 spacebars@1.0.10
 spacebars-compiler@1.0.10
 standard-minifier-css@1.0.5
 standard-minifier-js@1.0.5
 static-html@1.0.6
+templating@1.1.8
 templating-tools@1.0.3
+themeteorchef:bert@2.1.0
+tmeasday:check-npm-versions@0.2.0
 tracker@1.0.12
 ui@1.0.10
 underscore@1.0.7

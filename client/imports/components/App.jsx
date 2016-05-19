@@ -1,11 +1,34 @@
 import React from 'react';
+import CreatePlanCopyContainer from './CreatePlanCopyContainer';
+import CreatePlanContainer from './CreatePlanContainer';
+import EmailSignupContainer from './EmailSignupContainer';
+import IndexContainer from './IndexContainer';
+import OnboardingPlacesContainer from './OnboardingPlacesContainer';
+import OnboardingTimeContainer from './OnboardingTimeContainer';
+import PlanDeetsAnotherDriveContainer from './PlanDeetsAnotherDriveContainer';
+import PlanDeetsContainer from './PlanDeetsContainer';
+import StylesContainer from './StylesContainer';
+import TodayBlankContainer from './TodayBlankContainer';
+import TodayContainer from './TodayContainer';
+import WelcomeContainer from './WelcomeContainer';
 
-export default function App() {
-  return (
-    <h1 style={{ color: 'black', background: 'white' }}>
-      React is working!
-      <br />
-      (find me at ./client/imports/components/App.jsx)
-    </h1>
-  );
+export default class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <CreatePlanCopyContainer/>
+        <CreatePlanContainer/>
+        <EmailSignupContainer/>
+        <IndexContainer/>
+        <OnboardingPlacesContainer/>
+        <OnboardingTimeContainer/>
+        <PlanDeetsAnotherDriveContainer/>
+        <PlanDeetsContainer/>
+        <StylesContainer/>
+        <TodayBlankContainer/>
+        <TodayContainer/>
+        <WelcomeContainer/>
+      </div>
+      );
+  }
 }
