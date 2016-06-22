@@ -20,3 +20,4 @@ static-html
 react-meteor-data
 aldeed:simple-schema
 themeteorchef:bert
+zimme:collection-timestampable
