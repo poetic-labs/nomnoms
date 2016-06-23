@@ -27,3 +27,6 @@ accounts-password
 mdg:validated-method
 reywood:publish-composite
 matb33:collection-hooks
+accounts-google
+service-configuration
+check
