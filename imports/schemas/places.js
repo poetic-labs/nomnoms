@@ -13,6 +13,7 @@ export default new SimpleSchema({
   },
   photo: {
     type: String,
+    optional: true,
   },
   url: {
     type: String,
