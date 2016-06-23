@@ -2,19 +2,21 @@
   "name": "noms",
   "private": true,
   "scripts": {
-    "start": "meteor run",
+    "start": "meteor run --settings settings/development.json",
     "test": "npm run lint && chimp --mocha --path=tests --browser=phantomjs",
     "lint": "eslint . --ext .jsx,.js",
     "fix": "eslint . --ext .jsx,.js --fix",
     "watch": "chimp --ddp=http://localhost:3000 --watch --mocha --path=tests"
   },
   "dependencies": {
+    "faker": "^3.1.0",
     "lodash": "^4.12.0",
     "meteor-node-stubs": "~0.2.0",
     "param-store": "git+https://github.com/poetic/param-store.git",
     "react": "^15.0.2",
     "react-addons-pure-render-mixin": "^15.0.2",
-    "react-dom": "^15.0.2"
+    "react-dom": "^15.0.2",
+    "yelp": "^1.0.1"
   },
   "devDependencies": {
     "eslint": "^2.9.0",
