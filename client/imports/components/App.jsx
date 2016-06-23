@@ -1,5 +1,4 @@
 import React from 'react';
-import CreatePlanCopyContainer from './CreatePlanCopyContainer';
 import CreatePlanContainer from './CreatePlanContainer';
 import EmailSignupContainer from './EmailSignupContainer';
 import IndexContainer from './IndexContainer';
@@ -7,28 +6,31 @@ import OnboardingPlacesContainer from './OnboardingPlacesContainer';
 import OnboardingTimeContainer from './OnboardingTimeContainer';
 import PlanDeetsAnotherDriveContainer from './PlanDeetsAnotherDriveContainer';
 import PlanDeetsContainer from './PlanDeetsContainer';
-import StylesContainer from './StylesContainer';
-import TodayBlankContainer from './TodayBlankContainer';
 import TodayContainer from './TodayContainer';
 import WelcomeContainer from './WelcomeContainer';
 
-export default class App extends React.Component {
+import { Stack } from 'react-super-components';
+import { Provider } from 'react-redux';
+import store from '../store';
+
+class App extends React.Component {
   render() {
     return (
-      <div>
-        <CreatePlanCopyContainer/>
-        <CreatePlanContainer/>
-        <EmailSignupContainer/>
-        <IndexContainer/>
-        <OnboardingPlacesContainer/>
-        <OnboardingTimeContainer/>
-        <PlanDeetsAnotherDriveContainer/>
-        <PlanDeetsContainer/>
-        <StylesContainer/>
-        <TodayBlankContainer/>
-        <TodayContainer/>
-        <WelcomeContainer/>
-      </div>
-      );
+      <Provider store={store}>
+        <Stack index="path">
+          <CreatePlanContainer index="create-plan" />
+          <EmailSignupContainer index="email-signup" />
+          <IndexContainer index="" />
+          <OnboardingPlacesContainer index="onboarding-places" />
+          <OnboardingTimeContainer index="onboarding-time" />
+          <PlanDeetsAnotherDriveContainer index="plan-deets-another-driver" />
+          <PlanDeetsContainer index="plan-deets" />
+          <TodayContainer index="today" />
+          <WelcomeContainer index="welcome" />
+        </Stack>
+      </Provider>
+    );
   }
 }
+
+export default App;
