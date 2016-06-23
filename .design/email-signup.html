@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created in Webflow. http://www.webflow.com-->
-<!-- Last Published: Sun Apr 17 2016 22:55:20 GMT+0000 (UTC) -->
+<!-- Last Published: Thu Jun 23 2016 19:34:45 GMT+0000 (UTC) -->
 <html data-wf-site="56b3d966564dce9470c750af" data-wf-page="56b3f682564dce9470c77422">
 <head>
   <meta charset="utf-8">
@@ -35,12 +35,12 @@
     <h1>Sign up with email</h1>
   </div>
   <div class="w-form email-signup">
-    <form id="email-form" name="email-form" data-name="Email Form">
-      <label for="Email-2" class="label">Email</label>
-      <input id="Email-2" type="email" placeholder="Email" name="Email" data-name="Email" required="required" class="w-input text-field">
-      <label for="Password" class="label">Password</label>
-      <input id="Password" type="password" placeholder="Password" name="Password" data-name="Password" required="required" class="w-input text-field">
-      <input type="submit" value="Sign up" data-wait="Please wait..." class="w-button button-hollow">
+    <form data-name="Email Form" id="email-form" name="email-form">
+      <label class="label" for="Email-2">Email</label>
+      <input class="w-input text-field" data-name="Email" id="Email-2" maxlength="256" name="Email" placeholder="Email" required="required" type="email">
+      <label class="label" for="Password">Password</label>
+      <input class="w-input text-field" data-name="Password" id="Password" maxlength="256" name="Password" placeholder="Password" required="required" type="password">
+      <input class="w-button button-hollow" data-wait="Please wait..." type="submit" value="Sign up">
     </form>
     <div class="w-form-done">
       <p>Thank you! Your submission has been received!</p>

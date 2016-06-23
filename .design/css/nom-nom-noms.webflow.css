@@ -708,5 +708,42 @@ html.w-mod-js *[data-ix="hide"] {
     color: #fff;
     text-align: center;
   }
+  .button {
+    display: inline-block;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 0 6px 1px rgba(121, 132, 148, .36);
+    font-family: Montserrat, sans-serif;
+    color: #3c444c;
+    font-size: 15px;
+    line-height: 30px;
+    text-align: center;
+  }
+  .button.google {
+    background-image: url('../images/google.svg');
+    background-position: 0px 50%;
+    background-repeat: no-repeat;
+  }
+  .button.slack {
+    background-image: url('../images/slack.png');
+    background-position: 0px 50%;
+    background-size: 60px;
+    background-repeat: no-repeat;
+  }
+  .button.email {
+    background-image: url('../images/email.svg');
+    background-position: 0px 50%;
+    background-repeat: no-repeat;
+  }
+  .connect-div {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    padding: 10px;
+  }
 }
 
