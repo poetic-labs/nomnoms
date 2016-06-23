@@ -30,3 +30,4 @@ matb33:collection-hooks
 accounts-google
 service-configuration
 check
+acemtp:accounts-slack

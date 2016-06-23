@@ -35,6 +35,18 @@ class Index extends React.Component {
     });
   }
 
+  handleSlackLogin() {    
+    Meteor.loginWithSlack({}, (err) => {
+      if (err) {
+        throw new Meteor.Error(
+          'failed-slack-login',
+          'Unable to login with Slack.'
+        );
+      }
+
+    });
+  }
+
   render() {
     return (
       <div>
@@ -49,6 +61,13 @@ class Index extends React.Component {
           onClick={() => this.handleGoogleLogin()}
         >
           Sign in with Google
+        </Link>
+        <Link
+          href="#"
+          className="w-button button-hollow slack"
+          onClick={() => this.handleSlackLogin()}
+        >
+          Sign in with Slack
         </Link>
       </div>
     );
