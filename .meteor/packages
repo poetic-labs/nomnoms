@@ -19,4 +19,11 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 static-html
 react-meteor-data
 aldeed:simple-schema
+aldeed:collection2
+dburles:collection-helpers
 themeteorchef:bert
+zimme:collection-timestampable
+accounts-password
+mdg:validated-method
+reywood:publish-composite
+matb33:collection-hooks
