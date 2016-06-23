@@ -8,13 +8,13 @@ if (Meteor.isServer) {
   Users._ensureIndex({ username: 1 }, { unique: 1 });
 }
 
-Users.attachBehaviour('timestampable');
+// Users.attachBehaviour('timestampable');
 
-Users.attachBehaviour('timestampable', {
-  createdAt: 'insertedAt',
-  createdBy: 'insertedBy',
-  updatedAt: 'modifiedAt',
-  updatedBy: false,
-});
+// Users.attachBehaviour('timestampable', {
+//   createdAt: 'insertedAt',
+//   createdBy: 'insertedBy',
+//   updatedAt: 'modifiedAt',
+//   updatedBy: false,
+// });
 
 export default Users;
