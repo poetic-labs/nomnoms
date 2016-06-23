@@ -1,14 +1,35 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import App from './App';
+import Index from './Index';
 import Loading from './Loading';
+import _ from 'lodash';
+import { Tracker } from 'meteor/tracker';
+
+function subscribeAll(ids, callback) {
+  const readyFlags = _.map(ids, _.constant(false));
+  _.each(ids, (id, index) => {
+    Meteor.subscribe(id, () => {
+      readyFlags[index] = true;
+
+      if (_.every(readyFlags)) {
+        callback();
+      }
+    });
+  });
+}
 
 class AppWrapper extends React.Component {
   render() {
     const { loading, loggedIn } = this.props;
 
-    if (!loggedIn) {
+    if (loading) {
       return <Loading />;
+    }
+
+    if (!loggedIn) {
+      return <Index />;
     }
 
     return <App />;
@@ -27,6 +48,12 @@ Tracker.autorun(() => {
     if (subscriptionIsReady.get()) {
       return;
     }
+
+    subscribeAll([
+      'places',
+    ], () => {
+      subscriptionIsReady.set(true);
+    });
   } else {
     subscriptionIsReady.set(false);
   }
@@ -38,5 +65,6 @@ const AppWrapperWithContainer = createContainer(() => {
     loggedIn: Boolean(Meteor.user()),
   };
 }, AppWrapper);
+
 
 export default AppWrapperWithContainer;
