@@ -26,12 +26,15 @@ const userSocialSchema = new SimpleSchema({
 const userProfileSchema = new SimpleSchema({
   availableSeats: {
     type: Number,
+    optional: true,
   },
   canDrive: {
     type: Boolean,
+    defaultValue: false,
   },
   firstName: {
     type: String,
+    defaultValue: '',
   },
   hasPreferenceSet: {
     type: Boolean,
@@ -39,9 +42,15 @@ const userProfileSchema = new SimpleSchema({
   },
   lastName: {
     type: String,
+    defaultValue: '',
+  },
+  photo: {
+    type: String,
+    optional: true,
   },
   preferredTime: {
     type: Object,
+    optional: true,
   },
   'preferredTime.lunch': {
     type: Date,
@@ -93,5 +102,14 @@ export default new SimpleSchema({
     type: Object,
     optional: true,
     blackbox: true,
+  },
+  services: {
+    type: Object,
+    optional: true,
+    blackbox: true,
+  },
+  hasSignedInWithGoogle: {
+    type: Boolean,
+    defaultValue: false,
   },
 });
