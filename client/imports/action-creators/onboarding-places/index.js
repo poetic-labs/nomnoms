@@ -1,8 +1,8 @@
 /* eslint-disable */
-import submitEmailForm from './submit-email-form';
+import submitGotoPlacesForm from './submit-goto-places-form';
 import togglePlace from './toggle-place.js';
 
 export default {
-  submitEmailForm,
+  submitGotoPlacesForm,
   togglePlace,
 }

@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect as reduxConnect } from 'react-redux';
 import { createContainer } from 'meteor/react-meteor-data';
+import action from '../action-creators/index';
 import PlacesCheckbox from './PlacesCheckbox';
 import Places from '../../../imports/collections/places/collection';
 
@@ -16,10 +18,10 @@ export default class OnboardingPlaces extends React.Component {
           <img src="images/giphy (8).gif" />
         </div>
         <div className="w-form option-group">
-          <form id="email-form"
-            name="email-form"
-            data-name="Email Form"
-            data-redirect="/onboarding-car"
+          <form id="favorite-places-form"
+            name="favorite-places-form"
+            data-name="Favorite Places Form"
+            onSubmit={this.props['action.onboardingPlaces.submitGotoPlacesForm']}
           >
             {
               places.map(place => (
@@ -56,6 +58,15 @@ OnboardingPlaces.propTypes = {
   places: React.PropTypes.array,
 };
 
+const TrainerSessionNewWithRedux = reduxConnect(
+  (state) => ({
+    'state.onboardingPlaces.places': state.onboardingPlaces.places,
+  }),
+  {
+    'action.onboardingPlaces.submitGotoPlacesForm': action.onboardingPlaces.submitGotoPlacesForm,
+  }
+)(OnboardingPlaces);
+
 const OnboardingPlacesWithData = createContainer((props) => {
   const places = Places.find().fetch();
 
@@ -63,6 +74,6 @@ const OnboardingPlacesWithData = createContainer((props) => {
     places,
     ...props,
   };
-}, OnboardingPlaces);
+}, TrainerSessionNewWithRedux);
 
 export default OnboardingPlacesWithData;

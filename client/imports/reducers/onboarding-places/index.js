@@ -1,9 +1,9 @@
 /* eslint-disable */
 import { combineReducers } from 'redux';
-import emailForm from './email-form';
+import gotoPlacesForm from './goto-places-form';
 import places from './places';
 
 export default combineReducers({
-  emailForm,
+  gotoPlacesForm,
   places,
 })
