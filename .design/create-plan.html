@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created in Webflow. http://www.webflow.com-->
-<!-- Last Published: Sun Apr 17 2016 22:55:20 GMT+0000 (UTC) -->
+<!-- Last Published: Thu Jun 23 2016 19:34:45 GMT+0000 (UTC) -->
 <html data-wf-site="56b3d966564dce9470c750af" data-wf-page="56b4aab4c21ca5cf4fcfae36">
 <head>
   <meta charset="utf-8">
@@ -31,7 +31,7 @@
 </head>
 <body>
   <div class="w-section title-section new-plan">
-    <a href="today-blank.html" class="w-inline-block"><img width="14" src="images/back-orange.png">
+    <a class="w-inline-block" href="today-blank.html"><img src="images/back-orange.png" width="14">
     </a>
     <h1 class="centered">New Lunch Plan</h1>
   </div>
@@ -40,20 +40,20 @@
   </div>
   <div class="w-section">
     <div class="transportation-picker">
-      <div data-duration-in="300" data-duration-out="100" class="w-tabs">
+      <div class="w-tabs" data-duration-in="300" data-duration-out="100">
         <div class="w-tab-menu tabs-menu">
-          <a data-w-tab="Tab 1" class="w-tab-link w-inline-block tab-plan driving"></a>
-          <a data-w-tab="Tab 2" class="w-tab-link w-inline-block tab-plan"></a>
-          <a data-w-tab="Tab 3" class="w-tab-link w--current w-inline-block tab-plan delivery"></a>
+          <a class="w-tab-link w-inline-block tab-plan driving" data-w-tab="Tab 1"></a>
+          <a class="w-tab-link w-inline-block tab-plan" data-w-tab="Tab 2"></a>
+          <a class="w-tab-link w--current w-inline-block tab-plan delivery" data-w-tab="Tab 3"></a>
         </div>
         <div class="w-tab-content tabs-content">
-          <div data-w-tab="Tab 1" class="w-tab-pane tab-pane-form">
+          <div class="w-tab-pane tab-pane-form" data-w-tab="Tab 1">
             <div class="w-form">
-              <form id="email-form" name="email-form" data-name="Email Form">
-                <label for="name" class="label">WHERE?</label>
-                <input id="name" type="text" name="name" data-name="Name" class="w-input text-field">
-                <label for="field-2" class="label">WHEN?</label>
-                <select id="field-2" name="field-2" required="required" data-name="Field 2" class="w-select select">
+              <form data-name="Email Form" id="email-form" name="email-form">
+                <label class="label" for="name">WHERE?</label>
+                <input class="w-input text-field" data-name="Name" id="name" maxlength="256" name="name" type="text">
+                <label class="label" for="field-2">WHEN?</label>
+                <select class="w-select select" data-name="Field 2" id="field-2" name="field-2" required="required">
                   <option value="11:00">11:00 </option>
                   <option value="11:15">11:15</option>
                   <option value="11:30">11:30</option>
@@ -69,26 +69,26 @@
                   <option value="2:00">2:00</option>
                 </select>
                 <div class="w-checkbox w-clearfix checkbox-field">
-                  <input id="Place-Checkbox-2" type="checkbox" name="Place-Checkbox-2" data-name="Place Checkbox 2" class="w-checkbox-input checkbox-tick">
+                  <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox 2" id="Place-Checkbox-2" name="Place-Checkbox-2" type="checkbox">
                   <div class="checkbox-click-div active"></div>
-                  <label for="Place-Checkbox" class="w-form-label checkbox-text plan">Are you the driver?</label>
+                  <label class="w-form-label checkbox-text plan" for="Place-Checkbox">Are you the driver?</label>
                 </div>
                 <div class="w-checkbox w-clearfix checkbox-field">
-                  <input id="Place-Checkbox-3" type="checkbox" name="Place-Checkbox-3" data-name="Place Checkbox 3" class="w-checkbox-input checkbox-tick">
+                  <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox 3" id="Place-Checkbox-3" name="Place-Checkbox-3" type="checkbox">
                   <div class="checkbox-click-div"></div>
-                  <label for="Place-Checkbox" class="w-form-label checkbox-text plan">Accepting additional orders?</label>
+                  <label class="w-form-label checkbox-text plan" for="Place-Checkbox">Accepting additional orders?</label>
                 </div>
                 <div class="w-checkbox w-clearfix checkbox-field">
-                  <input id="Place-Checkbox-4" type="checkbox" name="Place-Checkbox-4" data-name="Place Checkbox 4" class="w-checkbox-input checkbox-tick">
+                  <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox 4" id="Place-Checkbox-4" name="Place-Checkbox-4" type="checkbox">
                   <div class="checkbox-click-div"></div>
-                  <label for="Place-Checkbox" class="w-form-label checkbox-text plan">Calling in?</label>
+                  <label class="w-form-label checkbox-text plan" for="Place-Checkbox">Calling in?</label>
                 </div>
                 <div class="w-checkbox w-clearfix checkbox-field">
-                  <input id="Place-Checkbox-5" type="checkbox" name="Place-Checkbox-5" data-name="Place Checkbox 5" class="w-checkbox-input checkbox-tick">
+                  <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox 5" id="Place-Checkbox-5" name="Place-Checkbox-5" type="checkbox">
                   <div class="checkbox-click-div"></div>
-                  <label for="Place-Checkbox" class="w-form-label checkbox-text plan">Dining in?</label>
+                  <label class="w-form-label checkbox-text plan" for="Place-Checkbox">Dining in?</label>
                 </div>
-                <input type="submit" value="Create a lunch plan" data-wait="Please wait..." class="w-button button-hollow fixed">
+                <input class="w-button button-hollow fixed" data-wait="Please wait..." type="submit" value="Create a lunch plan">
               </form>
               <div class="w-form-done">
                 <p>Thank you! Your submission has been received!</p>
@@ -98,13 +98,13 @@
               </div>
             </div>
           </div>
-          <div data-w-tab="Tab 2" class="w-tab-pane tab-pane-form">
+          <div class="w-tab-pane tab-pane-form" data-w-tab="Tab 2">
             <div class="w-form">
-              <form id="email-form" name="email-form" data-name="Email Form">
-                <label for="name-2" class="label">WHERE?</label>
-                <input id="name-2" type="text" name="name-2" data-name="Name 2" class="w-input text-field">
-                <label for="field" class="label">WHEN?</label>
-                <select id="field" name="field" required="required" class="w-select select">
+              <form data-name="Email Form" id="email-form" name="email-form">
+                <label class="label" for="name-2">WHERE?</label>
+                <input class="w-input text-field" data-name="Name 2" id="name-2" maxlength="256" name="name-2" type="text">
+                <label class="label" for="field">WHEN?</label>
+                <select class="w-select select" id="field" name="field" required="required">
                   <option value="11:00">11:00 </option>
                   <option value="11:15">11:15</option>
                   <option value="11:30">11:30</option>
@@ -120,21 +120,21 @@
                   <option value="2:00">2:00</option>
                 </select>
                 <div class="w-checkbox w-clearfix checkbox-field">
-                  <input id="Place-Checkbox-7" type="checkbox" name="Place-Checkbox-7" data-name="Place Checkbox 7" class="w-checkbox-input checkbox-tick">
+                  <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox 7" id="Place-Checkbox-7" name="Place-Checkbox-7" type="checkbox">
                   <div class="checkbox-click-div"></div>
-                  <label for="Place-Checkbox" class="w-form-label checkbox-text plan">Accepting additional orders?</label>
+                  <label class="w-form-label checkbox-text plan" for="Place-Checkbox">Accepting additional orders?</label>
                 </div>
                 <div class="w-checkbox w-clearfix checkbox-field">
-                  <input id="Place-Checkbox-8" type="checkbox" name="Place-Checkbox-8" data-name="Place Checkbox 8" class="w-checkbox-input checkbox-tick">
+                  <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox 8" id="Place-Checkbox-8" name="Place-Checkbox-8" type="checkbox">
                   <div class="checkbox-click-div"></div>
-                  <label for="Place-Checkbox" class="w-form-label checkbox-text plan">Calling in?</label>
+                  <label class="w-form-label checkbox-text plan" for="Place-Checkbox">Calling in?</label>
                 </div>
                 <div class="w-checkbox w-clearfix checkbox-field">
-                  <input id="Place-Checkbox-9" type="checkbox" name="Place-Checkbox-9" data-name="Place Checkbox 9" class="w-checkbox-input checkbox-tick">
+                  <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox 9" id="Place-Checkbox-9" name="Place-Checkbox-9" type="checkbox">
                   <div class="checkbox-click-div"></div>
-                  <label for="Place-Checkbox" class="w-form-label checkbox-text plan">Dining in?</label>
+                  <label class="w-form-label checkbox-text plan" for="Place-Checkbox">Dining in?</label>
                 </div>
-                <input type="submit" value="Create a lunch plan" data-wait="Please wait..." class="w-button button-hollow fixed">
+                <input class="w-button button-hollow fixed" data-wait="Please wait..." type="submit" value="Create a lunch plan">
               </form>
               <div class="w-form-done">
                 <p>Thank you! Your submission has been received!</p>
@@ -144,13 +144,13 @@
               </div>
             </div>
           </div>
-          <div data-w-tab="Tab 3" class="w-tab-pane w--tab-active tab-pane-form">
+          <div class="w-tab-pane w--tab-active tab-pane-form" data-w-tab="Tab 3">
             <div class="w-form">
-              <form id="email-form" name="email-form" data-name="Email Form">
-                <label for="name-3" class="label">WHERE?</label>
-                <input id="name-3" type="text" name="name-3" data-name="Name 3" class="w-input text-field">
-                <label for="field-3" class="label">WHEN?</label>
-                <select id="field-3" name="field-3" required="required" data-name="Field 3" class="w-select select">
+              <form data-name="Email Form" id="email-form" name="email-form">
+                <label class="label" for="name-3">WHERE?</label>
+                <input class="w-input text-field" data-name="Name 3" id="name-3" maxlength="256" name="name-3" type="text">
+                <label class="label" for="field-3">WHEN?</label>
+                <select class="w-select select" data-name="Field 3" id="field-3" name="field-3" required="required">
                   <option value="11:00">11:00 </option>
                   <option value="11:15">11:15</option>
                   <option value="11:30">11:30</option>
@@ -166,11 +166,11 @@
                   <option value="2:00">2:00</option>
                 </select>
                 <div class="w-checkbox w-clearfix checkbox-field">
-                  <input id="Place-Checkbox-10" type="checkbox" name="Place-Checkbox-10" data-name="Place Checkbox 10" class="w-checkbox-input checkbox-tick">
+                  <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox 10" id="Place-Checkbox-10" name="Place-Checkbox-10" type="checkbox">
                   <div class="checkbox-click-div"></div>
-                  <label for="Place-Checkbox" class="w-form-label checkbox-text plan">Accepting additional orders?</label>
+                  <label class="w-form-label checkbox-text plan" for="Place-Checkbox">Accepting additional orders?</label>
                 </div>
-                <input type="submit" value="Create a lunch plan" data-wait="Please wait..." class="w-button button-hollow fixed">
+                <input class="w-button button-hollow fixed" data-wait="Please wait..." type="submit" value="Create a lunch plan">
               </form>
               <div class="w-form-done">
                 <p>Thank you! Your submission has been received!</p>
