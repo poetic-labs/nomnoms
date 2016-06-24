@@ -7,16 +7,24 @@ import moment from 'moment';
 Plans.methods = {
   createPlan: new ValidatedMethod({
     name: 'Plans.methods.createPlan',
-    validate(plan) {
-      check(plan, Object);
+    validate(args) {
+      check(args, {
+        plan: Object,
+        userId: String,
+      });
     },
-    run(plan) {
+    run({ plan, userId }) {
       if (Meteor.isClient) return false;
+
+      console.log('plan: ', plan);
+
+      // on the app Meteor.userId()
+      // slack -- look at the document and grab the user id
 
       const newPlan = {
         where: plan.name,
         date: moment(`${moment().format('MM/DD/YYYY')} ${plan.field2}`).toDate(),
-        users: [Meteor.userId()],
+        users: [userId],
       };
 
       const planId = Plans.insert(newPlan);
@@ -25,4 +33,3 @@ Plans.methods = {
     },
   }),
 };
-

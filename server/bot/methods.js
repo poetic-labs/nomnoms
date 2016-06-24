@@ -1,3 +1,8 @@
+import Plans from '../../imports/collections/plans/collection';
+import Users from '../../imports/collections/users/collection';
+import _ from 'lodash';
+import moment from 'moment';
+
 Meteor.methods({
   'bot.checkUserStatus'(userId) {
     const registeredUser = Meteor.users.findOne({
@@ -6,12 +11,30 @@ Meteor.methods({
     if (registeredUser) return true;
   },
 
-  'bot.createPlan'(userId, placeName, planTime) {
-    return true;
+  'bot.createPlan'(slackUserId, placeName, planTime) {
+    const user = Users.findOne({ 'profile.social.slack.userId': slackUserId });
+
+    const planDeets = {
+      plan: {
+        name: placeName,
+        field2: planTime,
+      },
+      userId: user._id,
+    };
+
+    Plans.methods.createPlan.call(planDeets, (err, result) => {
+      if (err) {
+        console.log('oops! problem creating a plan from slack... ', err);
+      }
+
+      return result;
+    });
   },
 
   'bot.listAllPlans'(teamId, teamDomain) {
     const teamName = teamDomain.charAt(0).toUpperCase() + teamDomain.slice(1);
+
+    const plans = Plans.find().fetch();
 
     const planList = {
       text: `${teamName}'s lunch plans!`,
@@ -36,6 +59,18 @@ Meteor.methods({
         },
       ],
     };
+
+    _.each(plans, plan => {
+      const whoMadeThisPlan = Users.findOne(_.first(plan.users));
+
+      planList.attachments.push({
+        author_name: `${whoMadeThisPlan.profile.firstName} ${whoMadeThisPlan.profile.lastName}`,
+        text: `${plan.where} at ${moment(plan.date).format('hh:mm')}`,
+        thumb_url: 'http://www.meathgoldcoast.com/images/food.png',
+        footer: 'by nomnoms',
+      });
+    });
+
     return JSON.stringify(planList);
   },
 });

@@ -9,12 +9,19 @@ export default function submitEmailForm(event) {
 
   const createPlanState = store.getState().createPlan;
 
-  Plans.methods.createPlan.call(createPlanState, (err, result) => {
+  const planDeets = {
+    plan: createPlanState,
+    userId: Meteor.userId(),
+  };
+
+  Plans.methods.createPlan.call(planDeets, (err, result) => {
     if (err) {
       console.log('Error when trying to create a new plan.. ', err);
     }
 
-    ParamStore.setAll({ path: 'plan-deets' });
+    console.log(result);
+
+    ParamStore.setAll({ path: 'plan-deets', planId: result._id });
   });
 
   return {

@@ -41,9 +41,10 @@ formatTime = (text, index) => {
   const enteredForAfterNoon = formattedTime.hour() >= 1 && formattedTime.hour() < currentHour;
 
   if (isAfterNoon || !isAfterNoon && enteredForAfterNoon) {
-    return moment(formattedTime).add(12, 'hours').format('h:mma');
+    return moment(formattedTime).add(12, 'hours').format('hh:mm');
   };
-  return moment(formattedTime).format('h:mma');
+
+  return moment(formattedTime).format('hh:mm');
 };
 
 Picker.middleware(bodyParser.json());
