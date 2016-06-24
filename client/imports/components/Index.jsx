@@ -6,35 +6,40 @@ import Users from '../../../imports/collections/users/collection';
 import $ from 'jquery';
 
 class Index extends React.Component {
-  // handleGoogleLogin() {
-  //   Meteor.loginWithGoogle({}, (err) => {
-  //     if (err) {
-  //       throw new Meteor.Error(
-  //         'failed-google-login',
-  //         'Unable to login with Google.'
-  //       );
-  //     }
+  handleGoogleLogin() {
+   throw new Meteor.Error(
+        'failed-google-login',
+        'Google login is disabled.'
+    );
+   
+    Meteor.loginWithGoogle({}, (err) => {
+      if (err) {
+        throw new Meteor.Error(
+          'failed-google-login',
+          'Unable to login with Google.'
+        );
+      }
 
-  //     const user = Meteor.user();
+      const user = Meteor.user();
 
-  //     if (user.profile.hasPreferencesSet) {
-  //       console.log('ParamStore.setAll({ path: "plans" })');
-  //     }
+      if (user.profile.hasPreferencesSet) {
+        console.log('ParamStore.setAll({ path: "plans" })');
+      }
 
-  //     if (!user.hasSignedInWithGoogle) {
-  //       Users.methods.updateFromGoogleLogin.call(user, error => {
-  //         if (error) {
-  //           throw new Meteor.Error(
-  //             'failed-user-update',
-  //             'Unable to update your profile information from Google.'
-  //           );
-  //         } else {
-  //           ParamStore.setAll({ path: 'welcome' });
-  //         }
-  //       });
-  //     }
-  //   });
-  // }
+      if (!user.hasSignedInWithGoogle) {
+        Users.methods.updateFromGoogleLogin.call(user, error => {
+          if (error) {
+            throw new Meteor.Error(
+              'failed-user-update',
+              'Unable to update your profile information from Google.'
+            );
+          } else {
+            ParamStore.setAll({ path: 'welcome' });
+          }
+        });
+      }
+    });
+  }
 
   handleSlackLogin() {   
     Meteor.loginWithSlack({ requestPermissions: ['identity.basic', 'identity.avatar', 'identity.email', 'identity.team'] }, (err) => {
@@ -72,7 +77,6 @@ class Index extends React.Component {
                 'Unable to update your profile information from Slack.'
               );
             } else {
-              console.log('route to welcome');
               ParamStore.setAll({ path: 'welcome' });
             }
           });
