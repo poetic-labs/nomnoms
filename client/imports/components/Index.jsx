@@ -6,37 +6,37 @@ import ParamStore from 'param-store';
 import $ from 'jquery';
 
 class Index extends React.Component {
-  handleGoogleLogin() {
-    Meteor.loginWithGoogle({}, (err) => {
-      if (err) {
-        throw new Meteor.Error(
-          'failed-google-login',
-          'Unable to login with Google.'
-        );
-      }
+  // handleGoogleLogin() {
+  //   Meteor.loginWithGoogle({}, (err) => {
+  //     if (err) {
+  //       throw new Meteor.Error(
+  //         'failed-google-login',
+  //         'Unable to login with Google.'
+  //       );
+  //     }
 
-      const user = Meteor.user();
+  //     const user = Meteor.user();
 
-      if (user.profile.hasPreferencesSet) {
-        console.log('ParamStore.setAll({ path: "plans" })');
-      }
+  //     if (user.profile.hasPreferencesSet) {
+  //       console.log('ParamStore.setAll({ path: "plans" })');
+  //     }
 
-      if (!user.hasSignedInWithGoogle) {
-        Users.methods.updateFromGoogleLogin.call(user, error => {
-          if (error) {
-            throw new Meteor.Error(
-              'failed-user-update',
-              'Unable to update your profile information from Google.'
-            );
-          }
-        });
-      }
+  //     if (!user.hasSignedInWithGoogle) {
+  //       Users.methods.updateFromGoogleLogin.call(user, error => {
+  //         if (error) {
+  //           throw new Meteor.Error(
+  //             'failed-user-update',
+  //             'Unable to update your profile information from Google.'
+  //           );
+  //         } else {
+  //           ParamStore.setAll({ path: 'welcome' });
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
 
-      ParamStore.setAll({ path: 'welcome' });
-    });
-  }
-
-  handleSlackLogin() {    
+  handleSlackLogin() {   
     Meteor.loginWithSlack({ requestPermissions: ['identity.basic', 'identity.avatar', 'identity.email', 'identity.team'] }, (err) => {
       if (err) {
         throw new Meteor.Error(
@@ -46,6 +46,8 @@ class Index extends React.Component {
       }
 
       let user = Meteor.user();
+
+      console.log(user);
 
       if (user.profile.hasPreferencesSet) {
         console.log('ParamStore.setAll({ path: "plans" })');
@@ -57,26 +59,28 @@ class Index extends React.Component {
 
         $.getJSON(slackInfo, (slackData) => {
           if (slackData.error) {
+            console.log('error ', slackData.error);
             throw new Meteor.Error(
               'failed-slack-info-fetch',
               'Unable to login with Slack.'
             );
-          }
+          } 
 
-          user.slackData = slackData;
-
-          Users.methods.updateFromSlackLogin.call(user, error => {
+          Users.methods.updateFromSlackLogin.call({user, slackData}, error => {
             if (error) {
               throw new Meteor.Error(
                 'failed-user-update',
                 'Unable to update your profile information from Slack.'
               );
+            } else {
+              console.log('route to welcome');
+              ParamStore.setAll({ path: 'welcome' });
             }
           });
         });    
+      } else {
+          ParamStore.setAll({ path: 'welcome' });
       }
-
-      ParamStore.setAll({ path: 'welcome' });
     });   
   }
 

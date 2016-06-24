@@ -4,53 +4,51 @@ import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { check } from 'meteor/check';
 
 Users.methods = {
-  updateFromGoogleLogin: new ValidatedMethod({
-    name: 'Users.methods.updateFromGoogleLogin',
-    validate(user) {
-      check(user, Object);
-    },
-    run(user) {
-      if (Meteor.isClient) return false;
+  // updateFromGoogleLogin: new ValidatedMethod({
+  //   name: 'Users.methods.updateFromGoogleLogin',
+  //   validate(user) {
+  //     check(user, Object);
+  //   },
+  //   run(user) {
+  //     if (Meteor.isClient) return false;
 
-      const { email, given_name, family_name, picture } = user.services.google;
+  //     const { email, given_name, family_name, picture } = user.services.google;
 
-      const currentEmail = _.has(Meteor.user, 'email') ? Meteor.user.email[0] : '';
+  //     const currentEmail = _.has(Meteor.user, 'email') ? Meteor.user.email[0] : '';
 
-      const updateEmail = currentEmail === email ? {} : { $push: { emails: { address: email, verified: true } } };
+  //     const updateEmail = currentEmail === email ? {} : { $push: { emails: { address: email, verified: true } } };
 
-      Users.update(user._id, {
-        $set: {
-          hasSignedInWithGoogle: true,
-          username: email,
-          'profile.firstName': given_name,
-          'profile.lastName': family_name,
-          'profile.photo': picture,
-        },
-        updateEmail,
-      });
+  //     Users.update(user._id, {
+  //       $set: {
+  //         hasSignedInWithGoogle: true,
+  //         username: email,
+  //         'profile.firstName': given_name,
+  //         'profile.lastName': family_name,
+  //         'profile.photo': picture,
+  //       },
+  //       updateEmail,
+  //     });
 
-      return Users.findOne(user._id);
-    },
-  }),
+  //     return Users.findOne(user._id);
+  //   },
+  // }),
 
   updateFromSlackLogin: new ValidatedMethod({
     name: 'Users.methods.updateFromSlackLogin',
-    validate(user) {
-      check(user, Object);
+    validate(args) {
+      check(args, {
+        user: Object,
+        slackData: Object,
+      });
     },
-    run(user) {
+    run({ user, slackData }) {
       if (Meteor.isClient) return false;
 
-      const { name, id: slackUserId, email, image_1024: picture } = user.slackData.user;
-      const { id: slackTeamId } = user.slackData.team;
+      const { user: { email, id: slackUserId, image_1024: picture, name }, team: { id: slackTeamId } } = slackData;
 
       const splitName = name.split(' ');
       const firstName = splitName.shift();
       const lastName = splitName.shift() || '';
-
-      const currentEmail = _.has(Meteor.user, 'email') ? Meteor.user.email[0] : '';
-
-      const updateEmail = currentEmail === email ? {} : { $push: { emails: { address: email, verified: true } } };
 
       Users.update(user._id, {
         $set: {
@@ -65,9 +63,10 @@ Users.methods = {
               userId: slackUserId,
             },
           },
-          'services.slack.id': slackUserId,
         },
-        updateEmail,
+        $push: {
+          emails: { address: email, verified: true },
+        },
       });
 
       return Users.findOne(user._id);

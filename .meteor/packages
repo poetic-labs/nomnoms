@@ -31,4 +31,6 @@ accounts-google
 service-configuration
 check
 acemtp:accounts-slack
+meteorhacks:picker
 meteortoys:allthings
+
