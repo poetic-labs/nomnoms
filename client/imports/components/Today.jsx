@@ -1,13 +1,16 @@
+/* eslint-disable */
 import React from 'react';
 import { Link } from 'param-store';
 
-export default class Today extends React.Component {
+class Today extends React.Component {
   render() {
     return (
       <div>
         <div className="w-section title-section">
           <h1 className="centered">Today's Lunch Plans</h1>
-          <a href="#" className="w-inline-block profile-icon"><img width="26" src="images/account.png" /></a>
+          <Link href="account.html" className="w-inline-block profile-icon" params={{  path: 'account'}}>
+          <img src="images/account.png" width="26" />
+          </Link>
         </div>
         <div className="plan-wrapper">
           <div className="plan-option">
@@ -28,7 +31,7 @@ export default class Today extends React.Component {
               </div>
             </div>
             <Link href="plan-deets.html" className="w-inline-block deet-arrow" params={{  path: 'plan-deets'}}>
-            <img width="12" src="images/deets-arrow.png" className="arrow" />
+            <img src="images/deets-arrow.png" width="12" className="arrow" />
             </Link>
           </div>
           <div className="plan-option">
@@ -48,7 +51,7 @@ export default class Today extends React.Component {
                 </div>
               </div>
             </div>
-            <a href="#" className="w-inline-block deet-arrow"><img width="12" src="images/deets-arrow.png" className="arrow" /></a>
+            <a href="#" className="w-inline-block deet-arrow"><img src="images/deets-arrow.png" width="12" className="arrow" /></a>
           </div>
           <div className="plan-option">
             <div className="w-row">
@@ -73,7 +76,7 @@ export default class Today extends React.Component {
                 </div>
               </div>
             </div>
-            <a href="#" className="w-inline-block deet-arrow"><img width="12" src="images/deets-arrow.png" className="arrow" /></a>
+            <a href="#" className="w-inline-block deet-arrow"><img src="images/deets-arrow.png" width="12" className="arrow" /></a>
           </div>
           <div className="plan-option">
             <div className="w-row">
@@ -93,16 +96,20 @@ export default class Today extends React.Component {
                   </div>
                 </div>
                 <div className="seat-info">
-                  <h3 className="seat-info-text">WALKING OVER</h3>
+                  <h3 className="seat-info-text">WALKING</h3>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <Link href="create-plan.html" className="w-button button-hollow fixed" params={{  path: 'create-plan'}}> Create a lunch plan
-        </Link>
+        <div className="padding-all">
+          <Link href="create-plan.html" className="w-button button-hollow" params={{  path: 'create-plan'}}> Create a lunch plan
+          </Link>
+        </div>
       </div>
       );
   }
 }
 ;
+
+export default Today;

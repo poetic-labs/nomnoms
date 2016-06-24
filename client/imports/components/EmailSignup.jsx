@@ -1,38 +1,50 @@
+/* eslint-disable */
 import React from 'react';
+import { connect as reduxConnect } from 'react-redux';
+import action from '../action-creators/index';
 
-export default class EmailSignup extends React.Component {
+class EmailSignup extends React.Component {
   render() {
     return (
       <div>
         <div className="giphy-div welcome" />
         <div className="centered-div">
-          <h1>Sign up with email</h1>
+          <h1>Connect with email</h1>
         </div>
-        <div className="w-form email-signup">
-          <form id="email-form" name="email-form" data-name="Email Form">
+        <div id="email-signup-form" className="w-form email-signup">
+          <form data-name="Email Form"
+            id="email-form"
+            name="email-form"
+            onSubmit={this.props['action.emailSignup.submitEmailForm']}>
             <label className="label" htmlFor="Email-2">
               Email
             </label>
-            <input id="Email-2"
-              type="email"
-              placeholder="Email"
+            <input data-name="Email"
+              id="Email-2"
+              maxlength="256"
               name="Email"
-              data-name="Email"
+              placeholder="Email"
               required="required"
-              className="w-input text-field" />
+              type="email"
+              className="w-input text-field"
+              value={this.props['state.emailSignup.email2']}
+              onChange={this.props['action.emailSignup.changeEmail2']} />
             <label className="label" htmlFor="Password">
               Password
             </label>
-            <input id="Password"
-              type="password"
-              placeholder="Password"
+            <input data-name="Password"
+              id="Password"
+              maxlength="256"
               name="Password"
-              data-name="Password"
+              placeholder="Password"
               required="required"
-              className="w-input text-field" />
-            <input type="submit"
+              type="password"
+              className="w-input text-field"
+              value={this.props['state.emailSignup.password']}
+              onChange={this.props['action.emailSignup.changePassword']} />
+            <input data-wait="Please wait..."
+              type="submit"
               value="Sign up"
-              data-wait="Please wait..."
               className="w-button button-hollow" />
           </form>
           <div className="w-form-done">
@@ -51,3 +63,16 @@ export default class EmailSignup extends React.Component {
   }
 }
 ;
+const EmailSignupWithRedux = reduxConnect(
+  (state) => ({
+    'state.emailSignup.email2': state.emailSignup.email2,
+    'state.emailSignup.password': state.emailSignup.password
+  }),
+  {
+    'action.emailSignup.submitEmailForm': action.emailSignup.submitEmailForm,
+    'action.emailSignup.changeEmail2': action.emailSignup.changeEmail2,
+    'action.emailSignup.changePassword': action.emailSignup.changePassword
+  }
+)(EmailSignup);
+
+export default EmailSignupWithRedux;

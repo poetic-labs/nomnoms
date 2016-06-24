@@ -3,4 +3,12 @@
      -webkit-appearance: none;
      border-radius: 0px;
     }
+    .flex-scroll-content {
+      flex: 1; 
+      overflow-x: hidden;
+      overflow-y: scroll;
+      }
+    .flex-scroll-content {  
+      -webkit-overflow-scrolling: touch;
+      }
   

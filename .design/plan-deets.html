@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created in Webflow. http://www.webflow.com-->
-<!-- Last Published: Thu Jun 23 2016 19:34:45 GMT+0000 (UTC) -->
+<!-- Last Published: Fri Jun 24 2016 15:30:46 GMT+0000 (UTC) -->
 <html data-wf-site="56b3d966564dce9470c750af" data-wf-page="56b4d80bba033d24154c9576">
 <head>
   <meta charset="utf-8">
@@ -27,6 +27,14 @@
      -webkit-appearance: none;
      border-radius: 0px;
     }
+    .flex-scroll-content {
+      flex: 1; 
+      overflow-x: hidden;
+      overflow-y: scroll;
+      }
+    .flex-scroll-content {  
+      -webkit-overflow-scrolling: touch;
+      }
   </style>
 </head>
 <body>
@@ -68,7 +76,7 @@
       </div>
       <div class="w-col w-col-3 w-col-tiny-3 deet-person-column">
         <div class="plan-person deets"></div>
-        <div class="name">Ekenedil...</div>
+        <div class="name">Stephanie</div>
       </div>
       <div class="w-col w-col-3 w-col-tiny-3 add-yourself" data-ix="show-modal">
         <div class="plan-person deets add-yourself"></div>
@@ -78,8 +86,8 @@
   </div>
   <div class="the-deets">
     <h3>THE DEETS</h3>
-    <h2 class="secondary">Picking up<br>Not accepting additional orders</h2>
-  </div><a class="w-button button-hollow fixed" href="#">Edit plan</a>
+    <h2 class="secondary">Picking up<br>Not accepting additional orders</h2><a class="w-button button-hollow" href="#">Edit plan</a>
+  </div>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   <script type="text/javascript" src="js/webflow.js"></script>
   <!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->

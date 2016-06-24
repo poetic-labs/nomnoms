@@ -16,21 +16,20 @@ standard-minifier-js    # JS minifier run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
-static-html
-react-meteor-data
-aldeed:simple-schema
-aldeed:collection2
-dburles:collection-helpers
-themeteorchef:bert
-zimme:collection-timestampable
-accounts-password
-mdg:validated-method
-reywood:publish-composite
-matb33:collection-hooks
 accounts-google
-service-configuration
+accounts-password
+aldeed:collection2
+aldeed:simple-schema
 check
+dburles:collection-helpers
+matb33:collection-hooks
+mdg:validated-method
+react-meteor-data
+reywood:publish-composite
+service-configuration
 acemtp:accounts-slack
 meteorhacks:picker
+static-html
+themeteorchef:bert
+zimme:collection-timestampable
 meteortoys:allthings
-

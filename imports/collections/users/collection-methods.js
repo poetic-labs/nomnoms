@@ -72,4 +72,25 @@ Users.methods = {
       return Users.findOne(user._id);
     },
   }),
+
+  insertGotoPlaces: new ValidatedMethod({
+    name: 'Users.insertGotoPlaces',
+    validate(args) {
+      check(args, {
+        userId: String,
+        gotoPlaces: Array,
+      });
+    },
+    run({ userId, gotoPlaces }) {
+      if (Meteor.isClient) return false;
+
+      Users.update(userId, {
+        $set: {
+          'profile.gotoPlaces': gotoPlaces,
+        },
+      });
+
+      return Users.findOne(userId);
+    },
+  }),
 };
