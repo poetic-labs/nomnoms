@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'param-store';
 import Users from '../../../imports/collections/users/collection';
 import ParamStore from 'param-store';
+import $ from 'jquery';
 
 class Index extends React.Component {
   handleGoogleLogin() {
@@ -36,7 +37,7 @@ class Index extends React.Component {
   }
 
   handleSlackLogin() {    
-    Meteor.loginWithSlack({}, (err) => {
+    Meteor.loginWithSlack({ requestPermissions: ['identity.basic', 'identity.avatar', 'identity.email', 'identity.team'] }, (err) => {
       if (err) {
         throw new Meteor.Error(
           'failed-slack-login',
@@ -44,7 +45,39 @@ class Index extends React.Component {
         );
       }
 
-    });
+      let user = Meteor.user();
+
+      if (user.profile.hasPreferencesSet) {
+        console.log('ParamStore.setAll({ path: "plans" })');
+      }
+
+      if (!user.hasSignedInWithSlack) {
+        const slackToken = user.services.slack.accessToken;
+        const slackInfo = `https://slack.com/api/users.identity?token=${slackToken}`;
+
+        $.getJSON(slackInfo, (slackData) => {
+          if (slackData.error) {
+            throw new Meteor.Error(
+              'failed-slack-info-fetch',
+              'Unable to login with Slack.'
+            );
+          }
+
+          user.slackData = slackData;
+
+          Users.methods.updateFromSlackLogin.call(user, error => {
+            if (error) {
+              throw new Meteor.Error(
+                'failed-user-update',
+                'Unable to update your profile information from Slack.'
+              );
+            }
+          });
+        });    
+      }
+
+      ParamStore.setAll({ path: 'welcome' });
+    });   
   }
 
   render() {
