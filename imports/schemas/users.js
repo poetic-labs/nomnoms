@@ -68,6 +68,10 @@ const userProfileSchema = new SimpleSchema({
     type: userSocialSchema,
     optional: true,
   },
+  gotoPlaces: {
+    type: [String],
+    optional: true,
+  },
 });
 
 export default new SimpleSchema({

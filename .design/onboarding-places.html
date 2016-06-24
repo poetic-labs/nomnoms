@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created in Webflow. http://www.webflow.com-->
-<!-- Last Published: Thu Jun 23 2016 19:34:45 GMT+0000 (UTC) -->
+<!-- Last Published: Fri Jun 24 2016 15:30:46 GMT+0000 (UTC) -->
 <html data-wf-site="56b3d966564dce9470c750af" data-wf-page="56b3df60f9b59f2511588797">
 <head>
   <meta charset="utf-8">
@@ -27,48 +27,90 @@
      -webkit-appearance: none;
      border-radius: 0px;
     }
+    .flex-scroll-content {
+      flex: 1; 
+      overflow-x: hidden;
+      overflow-y: scroll;
+      }
+    .flex-scroll-content {  
+      -webkit-overflow-scrolling: touch;
+      }
   </style>
 </head>
 <body>
-  <div class="w-section title-section">
-    <h1 class="centered">Where are your go-to lunch places?</h1>
-  </div>
-  <div class="giphy-div"><img src="images/giphy (8).gif">
-  </div>
-  <div class="w-form option-group">
-    <form data-name="Email Form" data-redirect="/onboarding-car" id="email-form" name="email-form">
-      <div class="w-checkbox w-clearfix checkbox-field">
-        <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox" id="Place-Checkbox" name="Place-Checkbox" type="checkbox">
-        <div class="checkbox-click-div active"></div>
-        <label class="w-form-label checkbox-text" for="Place-Checkbox">Chipotle</label>
+  <div class="fixed-position flexbox">
+    <div class="w-form flex-scroll-content">
+      <form data-name="Email Form" data-redirect="/onboarding-car" id="email-form" name="email-form">
+        <div class="w-section title-section">
+          <h1 class="centered">Where are your go-to lunch places?</h1>
+        </div>
+        <div class="giphy-div"><img src="images/giphy (8).gif">
+        </div>
+        <div class="w-checkbox w-clearfix checkbox-field">
+          <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox" id="Place-Checkbox" name="Place-Checkbox" type="checkbox">
+          <div class="checkbox-click-div active"></div>
+          <label class="w-form-label checkbox-text" for="Place-Checkbox">Chipotle</label>
+        </div>
+        <div class="w-checkbox w-clearfix checkbox-field">
+          <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox 2" id="Place-Checkbox-2" name="Place-Checkbox-2" type="checkbox">
+          <div class="checkbox-click-div"></div>
+          <label class="w-form-label checkbox-text" for="Place-Checkbox">Whole Foods Market</label>
+        </div>
+        <div class="w-checkbox w-clearfix checkbox-field">
+          <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox 3" id="Place-Checkbox-3" name="Place-Checkbox-3" type="checkbox">
+          <div class="checkbox-click-div active"></div>
+          <label class="w-form-label checkbox-text" for="Place-Checkbox">Zabak's</label>
+        </div>
+        <div class="w-checkbox w-clearfix checkbox-field">
+          <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox 4" id="Place-Checkbox-4" name="Place-Checkbox-4" type="checkbox">
+          <div class="checkbox-click-div"></div>
+          <label class="w-form-label checkbox-text" for="Place-Checkbox">Island Grill</label>
+        </div>
+        <div class="w-checkbox w-clearfix checkbox-field">
+          <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox 5" id="Place-Checkbox-5" name="Place-Checkbox-5" type="checkbox">
+          <div class="checkbox-click-div"></div>
+          <label class="w-form-label checkbox-text" for="Place-Checkbox">Barnaby's Cafe</label>
+        </div>
+        <div class="w-checkbox w-clearfix checkbox-field">
+          <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox 11" id="Place-Checkbox-11" name="Place-Checkbox-11" type="checkbox">
+          <div class="checkbox-click-div"></div>
+          <label class="w-form-label checkbox-text" for="Place-Checkbox">Zoe's Kitchen</label>
+        </div>
+        <div class="w-checkbox w-clearfix checkbox-field">
+          <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox 10" id="Place-Checkbox-10" name="Place-Checkbox-10" type="checkbox">
+          <div class="checkbox-click-div"></div>
+          <label class="w-form-label checkbox-text" for="Place-Checkbox">Adair Kitchen</label>
+        </div>
+        <div class="w-checkbox w-clearfix checkbox-field">
+          <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox 9" id="Place-Checkbox-9" name="Place-Checkbox-9" type="checkbox">
+          <div class="checkbox-click-div"></div>
+          <label class="w-form-label checkbox-text" for="Place-Checkbox">Whataburger</label>
+        </div>
+        <div class="w-checkbox w-clearfix checkbox-field">
+          <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox 8" id="Place-Checkbox-8" name="Place-Checkbox-8" type="checkbox">
+          <div class="checkbox-click-div"></div>
+          <label class="w-form-label checkbox-text" for="Place-Checkbox">Snap Kitchen</label>
+        </div>
+        <div class="w-checkbox w-clearfix checkbox-field">
+          <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox 7" id="Place-Checkbox-7" name="Place-Checkbox-7" type="checkbox">
+          <div class="checkbox-click-div"></div>
+          <label class="w-form-label checkbox-text" for="Place-Checkbox">Daily Juice</label>
+        </div>
+        <div class="w-checkbox w-clearfix checkbox-field">
+          <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox 6" id="Place-Checkbox-6" name="Place-Checkbox-6" type="checkbox">
+          <div class="checkbox-click-div"></div>
+          <label class="w-form-label checkbox-text" for="Place-Checkbox">Cafe Express</label>
+        </div>
+      </form>
+      <div class="w-form-done">
+        <p>Thank you! Your submission has been received!</p>
       </div>
-      <div class="w-checkbox w-clearfix checkbox-field">
-        <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox 2" id="Place-Checkbox-2" name="Place-Checkbox-2" type="checkbox">
-        <div class="checkbox-click-div"></div>
-        <label class="w-form-label checkbox-text" for="Place-Checkbox">Whole Foods Market</label>
+      <div class="w-form-fail">
+        <p>Oops! Something went wrong while submitting the form</p>
       </div>
-      <div class="w-checkbox w-clearfix checkbox-field">
-        <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox 3" id="Place-Checkbox-3" name="Place-Checkbox-3" type="checkbox">
-        <div class="checkbox-click-div active"></div>
-        <label class="w-form-label checkbox-text" for="Place-Checkbox">Zabak's</label>
-      </div>
-      <div class="w-checkbox w-clearfix checkbox-field">
-        <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox 4" id="Place-Checkbox-4" name="Place-Checkbox-4" type="checkbox">
-        <div class="checkbox-click-div"></div>
-        <label class="w-form-label checkbox-text" for="Place-Checkbox">Island Grill</label>
-      </div>
-      <div class="w-checkbox w-clearfix checkbox-field">
-        <input class="w-checkbox-input checkbox-tick" data-name="Place Checkbox 5" id="Place-Checkbox-5" name="Place-Checkbox-5" type="checkbox">
-        <div class="checkbox-click-div"></div>
-        <label class="w-form-label checkbox-text" for="Place-Checkbox">Barnaby's Cafe</label>
-      </div>
-      <input class="w-button button-hollow fixed" data-wait="Please wait..." type="submit" value="Next">
-    </form>
-    <div class="w-form-done">
-      <p>Thank you! Your submission has been received!</p>
     </div>
-    <div class="w-form-fail">
-      <p>Oops! Something went wrong while submitting the form</p>
+    <div class="bottom-button">
+      <input class="w-button button-hollow" data-redirect="/onboarding-car" data-wait="Please wait..." type="submit" value="Next">
     </div>
   </div>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
