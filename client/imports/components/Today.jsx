@@ -5,6 +5,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import Plans from '../../../imports/collections/plans/collection';
 import TodayPlanListItem from './TodayPlanListItem';
 import moment from 'moment';
+import ParamStore from 'param-store';
 
 class Today extends React.Component {
   render() {
@@ -44,7 +45,8 @@ class Today extends React.Component {
 }
 
 const TodayWithData = createContainer((props) => {
-  const plans = Plans.find().fetch()
+  const plans = Plans.find().fetch();
+  if (plans.length === 0) ParamStore.setAll({ path: 'today-blank' });
 
   return {
     plans,
