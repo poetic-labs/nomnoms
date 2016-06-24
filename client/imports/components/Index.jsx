@@ -1,8 +1,42 @@
 /* eslint-disable */
+import { Meteor } from 'meteor/meteor';
 import React from 'react';
-import { Link } from 'param-store';
+import ParamStore, { Link } from 'param-store';
+import Users from '../../../imports/collections/users/collection';
 
 class Index extends React.Component {
+  handleGoogleLogin() {
+    console.log('handleGoogleLogin');
+
+    Meteor.loginWithGoogle({}, (err) => {
+      if (err) {
+        throw new Meteor.Error(
+          'failed-google-login',
+          'Unable to login with Google.'
+        );
+      }
+
+      const user = Meteor.user();
+
+      if (user.profile.hasPreferencesSet) {
+        console.log('ParamStore.setAll({ path: "plans" })');
+      }
+
+      if (!user.hasSignedInWithGoogle) {
+        Users.methods.updateFromGoogleLogin.call(user, error => {
+          if (error) {
+            throw new Meteor.Error(
+              'failed-user-update',
+              'Unable to update your profile information from Google.'
+            );
+          }
+        });
+      }
+
+      ParamStore.setAll({ path: 'welcome' });
+    });
+  }
+
   render() {
     return (
       <div>
@@ -13,7 +47,12 @@ class Index extends React.Component {
           </div>
         </div>
         <div className="connect-div">
-          <Link href="welcome.html" className="w-button button google" params={{  path: 'welcome'}}> Sign in with Google
+          <Link
+            href="#"
+            className="w-button button google"
+            onClick={() => this.handleGoogleLogin()}
+          >
+            Sign in with Google
           </Link>
           <Link href="welcome.html" className="w-button button slack" params={{  path: 'welcome'}}> Sign in with Slack
           </Link>

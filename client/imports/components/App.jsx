@@ -20,6 +20,7 @@ import store from '../store';
 
 class App extends React.Component {
   render() {
+    console.log('App.jsx');
     return (
       <Provider store={store}>
         <Stack index="path">
@@ -39,7 +40,7 @@ class App extends React.Component {
           <Welcome index="welcome" />
         </Stack>
       </Provider>
-      );
+    );
   }
 }
 ;
