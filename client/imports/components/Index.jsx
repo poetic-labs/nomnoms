@@ -11,7 +11,7 @@ class Index extends React.Component {
         'failed-google-login',
         'Google login is disabled.'
     );
-   
+
     Meteor.loginWithGoogle({}, (err) => {
       if (err) {
         throw new Meteor.Error(
@@ -50,9 +50,7 @@ class Index extends React.Component {
         );
       }
 
-      let user = Meteor.user();
-
-      console.log(user);
+      const user = Meteor.user();
 
       if (user.profile.hasPreferencesSet) {
         console.log('ParamStore.setAll({ path: "plans" })');
