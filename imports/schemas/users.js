@@ -116,4 +116,8 @@ export default new SimpleSchema({
     type: Boolean,
     defaultValue: false,
   },
+  hasSignedInWithSlack: {
+    type: Boolean,
+    defaultValue: false,
+  },
 });

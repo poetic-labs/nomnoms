@@ -27,6 +27,9 @@ mdg:validated-method
 react-meteor-data
 reywood:publish-composite
 service-configuration
+acemtp:accounts-slack
+meteorhacks:picker
 static-html
 themeteorchef:bert
 zimme:collection-timestampable
+meteortoys:allthings

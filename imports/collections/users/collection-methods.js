@@ -31,6 +31,46 @@ Users.methods = {
     },
   }),
 
+  updateFromSlackLogin: new ValidatedMethod({
+    name: 'Users.methods.updateFromSlackLogin',
+    validate(args) {
+      check(args, {
+        user: Object,
+        slackData: Object,
+      });
+    },
+    run({ user, slackData }) {
+      if (Meteor.isClient) return false;
+
+      const { user: { email, id: slackUserId, image_1024: picture, name }, team: { id: slackTeamId } } = slackData;
+
+      const splitName = name.split(' ');
+      const firstName = splitName.shift();
+      const lastName = splitName.shift() || '';
+
+      Users.update(user._id, {
+        $set: {
+          hasSignedInWithSlack: true,
+          username: email,
+          'profile.firstName': firstName,
+          'profile.lastName': lastName,
+          'profile.photo': picture,
+          'profile.social': {
+            slack: {
+              teamId: slackTeamId,
+              userId: slackUserId,
+            },
+          },
+        },
+        $push: {
+          emails: { address: email, verified: true },
+        },
+      });
+
+      return Users.findOne(user._id);
+    },
+  }),
+
   insertGotoPlaces: new ValidatedMethod({
     name: 'Users.insertGotoPlaces',
     validate(args) {

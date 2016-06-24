@@ -3,10 +3,14 @@ import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import ParamStore, { Link } from 'param-store';
 import Users from '../../../imports/collections/users/collection';
+import $ from 'jquery';
 
 class Index extends React.Component {
   handleGoogleLogin() {
-    console.log('handleGoogleLogin');
+   throw new Meteor.Error(
+        'failed-google-login',
+        'Google login is disabled.'
+    );
 
     Meteor.loginWithGoogle({}, (err) => {
       if (err) {
@@ -29,12 +33,56 @@ class Index extends React.Component {
               'failed-user-update',
               'Unable to update your profile information from Google.'
             );
+          } else {
+            ParamStore.setAll({ path: 'welcome' });
           }
         });
       }
-
-      ParamStore.setAll({ path: 'welcome' });
     });
+  }
+
+  handleSlackLogin() {   
+    Meteor.loginWithSlack({ requestPermissions: ['identity.basic', 'identity.avatar', 'identity.email', 'identity.team'] }, (err) => {
+      if (err) {
+        throw new Meteor.Error(
+          'failed-slack-login',
+          'Unable to login with Slack.'
+        );
+      }
+
+      const user = Meteor.user();
+
+      if (user.profile.hasPreferencesSet) {
+        console.log('ParamStore.setAll({ path: "plans" })');
+      }
+
+      if (!user.hasSignedInWithSlack) {
+        const slackToken = user.services.slack.accessToken;
+        const slackInfo = `https://slack.com/api/users.identity?token=${slackToken}`;
+
+        $.getJSON(slackInfo, (slackData) => {
+          if (slackData.error) {
+            throw new Meteor.Error(
+              'failed-slack-info-fetch',
+              'Unable to login with Slack.'
+            );
+          } 
+
+          Users.methods.updateFromSlackLogin.call({user, slackData}, error => {
+            if (error) {
+              throw new Meteor.Error(
+                'failed-user-update',
+                'Unable to update your profile information from Slack.'
+              );
+            } else {
+              ParamStore.setAll({ path: 'welcome' });
+            }
+          });
+        });    
+      } else {
+          ParamStore.setAll({ path: 'welcome' });
+      }
+    });   
   }
 
   render() {
@@ -54,7 +102,12 @@ class Index extends React.Component {
           >
             Sign in with Google
           </Link>
-          <Link href="welcome.html" className="w-button button slack" params={{  path: 'welcome'}}> Sign in with Slack
+          <Link
+            href="#"
+            className="w-button button slack"
+            onClick={() => this.handleSlackLogin()}
+          >
+            Sign in with Slack
           </Link>
           <Link href="email-signup.html" className="w-button button email" params={{  path: 'email-signup'}}> Sign in with Email
           </Link>

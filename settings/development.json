@@ -1,0 +1,16 @@
+{
+  "YELP": {
+    "CONSUMER_KEY": "CLcuTh21b9Ovzx-LhIQVOw",
+    "CONSUMER_SECRET": "v0NBc8JA6rlVCnm0uG1FFqcnU9k",
+    "TOKEN": "JKu7LtinKIMGLLnenTY7NY2b8oHJ90h1",
+    "TOKEN_SECRET": "Fbwm2DDFUq_fv9ZimWNFlHZ2Xfg"
+  },
+  "GOOGLE": {
+    "CLIENT_ID": "754812710187-g6d243vhqdqpe9e3hnv11aaj2t4revrc.apps.googleusercontent.com",
+    "CLIENT_SECRET": "XyXQpaM5OC8BbWIKAjrJkVPY"
+  },
+  "SLACK": {
+    "CLIENT_ID": "2304434231.53830371521",
+    "CLIENT_SECRET": "bf38aaed41a171e6959204b19135acc6"
+  }
+}
