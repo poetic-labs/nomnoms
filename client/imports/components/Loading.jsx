@@ -1,11 +1,6 @@
 import React from 'react';
 
 class Loading extends React.Component {
-  componentWillMount() {
-    const user = Meteor.user();
-    console.log('user: ', user);
-  }
-
   render() {
     return (
       <div>
