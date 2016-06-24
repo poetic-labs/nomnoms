@@ -1,13 +1,16 @@
+/* eslint-disable */
 import React from 'react';
 import { Link } from 'param-store';
+import { connect as reduxConnect } from 'react-redux';
+import action from '../action-creators/index';
 
-export default class CreatePlan extends React.Component {
+class CreatePlan extends React.Component {
   render() {
     return (
       <div>
         <div className="w-section title-section new-plan">
           <Link href="today-blank.html" className="w-inline-block" params={{  path: 'today-blank'}}>
-          <img width="14" src="images/back-orange.png" />
+          <img src="images/back-orange.png" width="14" />
           </Link>
           <h1 className="centered">New Lunch Plan</h1>
         </div>
@@ -18,28 +21,37 @@ export default class CreatePlan extends React.Component {
           <div className="transportation-picker">
             <div data-duration-in="300" data-duration-out="100" className="w-tabs">
               <div className="w-tab-menu tabs-menu">
-                <a data-w-tab="Tab 1" className="w-tab-link w-inline-block tab-plan driving" /> <a data-w-tab="Tab 2" className="w-tab-link w-inline-block tab-plan" />          <a data-w-tab="Tab 3" className="w-tab-link w--current w-inline-block tab-plan delivery" />
+                <a data-w-tab="Tab 1" className="w-tab-link w--current w-inline-block tab-plan driving" /> <a data-w-tab="Tab 2" className="w-tab-link w-inline-block tab-plan"
+                /> <a data-w-tab="Tab 3" className="w-tab-link w-inline-block tab-plan delivery" />
               </div>
               <div className="w-tab-content tabs-content">
-                <div data-w-tab="Tab 1" className="w-tab-pane tab-pane-form">
+                <div data-w-tab="Tab 1" className="w-tab-pane w--tab-active tab-pane-form">
                   <div className="w-form">
-                    <form id="email-form" name="email-form" data-name="Email Form">
+                    <form data-name="Email Form"
+                      id="email-form"
+                      name="email-form"
+                      onSubmit={this.props['action.createPlan.submitEmailForm']}>
                       <label className="label" htmlFor="name">
                         WHERE?
                       </label>
-                      <input id="name"
-                        type="text"
+                      <input data-name="Name"
+                        id="name"
+                        maxlength="256"
                         name="name"
-                        data-name="Name"
-                        className="w-input text-field" />
+                        type="text"
+                        className="w-input text-field"
+                        value={this.props['state.createPlan.name']}
+                        onChange={this.props['action.createPlan.changeName']} />
                       <label className="label" htmlFor="field-2">
                         WHEN?
                       </label>
-                      <select id="field-2"
+                      <select data-name="Field 2"
+                        id="field-2"
                         name="field-2"
                         required="required"
-                        data-name="Field 2"
-                        className="w-select select">
+                        className="w-select select"
+                        selected={this.props['state.createPlan.field2']}
+                        onChange={this.props['action.createPlan.selectField2']}>
                         <option value="11:00">
                           11:00
                         </option>
@@ -81,53 +93,63 @@ export default class CreatePlan extends React.Component {
                         </option>
                       </select>
                       <div className="w-checkbox w-clearfix checkbox-field">
-                        <input id="Place-Checkbox-2"
-                          type="checkbox"
+                        <input data-name="Place Checkbox 2"
+                          id="Place-Checkbox-2"
                           name="Place-Checkbox-2"
-                          data-name="Place Checkbox 2"
-                          className="w-checkbox-input checkbox-tick" />
+                          type="checkbox"
+                          className="w-checkbox-input checkbox-tick"
+                          checked={this.props['state.createPlan.placeCheckbox2']}
+                          onChange={this.props['action.createPlan.togglePlaceCheckbox2']} />
                         <div className="checkbox-click-div active" />
                         <label className="w-form-label checkbox-text plan" htmlFor="Place-Checkbox">
                           Are you the driver?
                         </label>
                       </div>
                       <div className="w-checkbox w-clearfix checkbox-field">
-                        <input id="Place-Checkbox-3"
-                          type="checkbox"
+                        <input data-name="Place Checkbox 3"
+                          id="Place-Checkbox-3"
                           name="Place-Checkbox-3"
-                          data-name="Place Checkbox 3"
-                          className="w-checkbox-input checkbox-tick" />
+                          type="checkbox"
+                          className="w-checkbox-input checkbox-tick"
+                          checked={this.props['state.createPlan.placeCheckbox3']}
+                          onChange={this.props['action.createPlan.togglePlaceCheckbox3']} />
                         <div className="checkbox-click-div" />
                         <label className="w-form-label checkbox-text plan" htmlFor="Place-Checkbox">
                           Accepting additional orders?
                         </label>
                       </div>
                       <div className="w-checkbox w-clearfix checkbox-field">
-                        <input id="Place-Checkbox-4"
-                          type="checkbox"
+                        <input data-name="Place Checkbox 4"
+                          id="Place-Checkbox-4"
                           name="Place-Checkbox-4"
-                          data-name="Place Checkbox 4"
-                          className="w-checkbox-input checkbox-tick" />
+                          type="checkbox"
+                          className="w-checkbox-input checkbox-tick"
+                          checked={this.props['state.createPlan.placeCheckbox4']}
+                          onChange={this.props['action.createPlan.togglePlaceCheckbox4']} />
                         <div className="checkbox-click-div" />
                         <label className="w-form-label checkbox-text plan" htmlFor="Place-Checkbox">
                           Calling in?
                         </label>
                       </div>
                       <div className="w-checkbox w-clearfix checkbox-field">
-                        <input id="Place-Checkbox-5"
-                          type="checkbox"
+                        <input data-name="Place Checkbox 5"
+                          id="Place-Checkbox-5"
                           name="Place-Checkbox-5"
-                          data-name="Place Checkbox 5"
-                          className="w-checkbox-input checkbox-tick" />
+                          type="checkbox"
+                          className="w-checkbox-input checkbox-tick"
+                          checked={this.props['state.createPlan.placeCheckbox5']}
+                          onChange={this.props['action.createPlan.togglePlaceCheckbox5']} />
                         <div className="checkbox-click-div" />
                         <label className="w-form-label checkbox-text plan" htmlFor="Place-Checkbox">
                           Dining in?
                         </label>
                       </div>
-                      <input type="submit"
-                        value="Create a lunch plan"
-                        data-wait="Please wait..."
-                        className="w-button button-hollow fixed" />
+                      <div>
+                        <input data-wait="Please wait..."
+                          type="submit"
+                          value="Create a lunch plan"
+                          className="w-button button-hollow" />
+                      </div>
                     </form>
                     <div className="w-form-done">
                       <p>
@@ -143,22 +165,30 @@ export default class CreatePlan extends React.Component {
                 </div>
                 <div data-w-tab="Tab 2" className="w-tab-pane tab-pane-form">
                   <div className="w-form">
-                    <form id="email-form" name="email-form" data-name="Email Form">
+                    <form data-name="Email Form"
+                      id="email-form"
+                      name="email-form"
+                      onSubmit={this.props['action.createPlan.submitEmailForm']}>
                       <label className="label" htmlFor="name-2">
                         WHERE?
                       </label>
-                      <input id="name-2"
-                        type="text"
+                      <input data-name="Name 2"
+                        id="name-2"
+                        maxlength="256"
                         name="name-2"
-                        data-name="Name 2"
-                        className="w-input text-field" />
+                        type="text"
+                        className="w-input text-field"
+                        value={this.props['state.createPlan.name2']}
+                        onChange={this.props['action.createPlan.changeName2']} />
                       <label className="label" htmlFor="field">
                         WHEN?
                       </label>
                       <select id="field"
                         name="field"
                         required="required"
-                        className="w-select select">
+                        className="w-select select"
+                        selected={this.props['state.createPlan.field']}
+                        onChange={this.props['action.createPlan.selectField']}>
                         <option value="11:00">
                           11:00
                         </option>
@@ -200,42 +230,50 @@ export default class CreatePlan extends React.Component {
                         </option>
                       </select>
                       <div className="w-checkbox w-clearfix checkbox-field">
-                        <input id="Place-Checkbox-7"
-                          type="checkbox"
+                        <input data-name="Place Checkbox 7"
+                          id="Place-Checkbox-7"
                           name="Place-Checkbox-7"
-                          data-name="Place Checkbox 7"
-                          className="w-checkbox-input checkbox-tick" />
+                          type="checkbox"
+                          className="w-checkbox-input checkbox-tick"
+                          checked={this.props['state.createPlan.placeCheckbox7']}
+                          onChange={this.props['action.createPlan.togglePlaceCheckbox7']} />
                         <div className="checkbox-click-div" />
                         <label className="w-form-label checkbox-text plan" htmlFor="Place-Checkbox">
                           Accepting additional orders?
                         </label>
                       </div>
                       <div className="w-checkbox w-clearfix checkbox-field">
-                        <input id="Place-Checkbox-8"
-                          type="checkbox"
+                        <input data-name="Place Checkbox 8"
+                          id="Place-Checkbox-8"
                           name="Place-Checkbox-8"
-                          data-name="Place Checkbox 8"
-                          className="w-checkbox-input checkbox-tick" />
+                          type="checkbox"
+                          className="w-checkbox-input checkbox-tick"
+                          checked={this.props['state.createPlan.placeCheckbox8']}
+                          onChange={this.props['action.createPlan.togglePlaceCheckbox8']} />
                         <div className="checkbox-click-div" />
                         <label className="w-form-label checkbox-text plan" htmlFor="Place-Checkbox">
                           Calling in?
                         </label>
                       </div>
                       <div className="w-checkbox w-clearfix checkbox-field">
-                        <input id="Place-Checkbox-9"
-                          type="checkbox"
+                        <input data-name="Place Checkbox 9"
+                          id="Place-Checkbox-9"
                           name="Place-Checkbox-9"
-                          data-name="Place Checkbox 9"
-                          className="w-checkbox-input checkbox-tick" />
+                          type="checkbox"
+                          className="w-checkbox-input checkbox-tick"
+                          checked={this.props['state.createPlan.placeCheckbox9']}
+                          onChange={this.props['action.createPlan.togglePlaceCheckbox9']} />
                         <div className="checkbox-click-div" />
                         <label className="w-form-label checkbox-text plan" htmlFor="Place-Checkbox">
                           Dining in?
                         </label>
                       </div>
-                      <input type="submit"
-                        value="Create a lunch plan"
-                        data-wait="Please wait..."
-                        className="w-button button-hollow fixed" />
+                      <div>
+                        <input data-wait="Please wait..."
+                          type="submit"
+                          value="Create a lunch plan"
+                          className="w-button button-hollow" />
+                      </div>
                     </form>
                     <div className="w-form-done">
                       <p>
@@ -249,25 +287,33 @@ export default class CreatePlan extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div data-w-tab="Tab 3" className="w-tab-pane w--tab-active tab-pane-form">
+                <div data-w-tab="Tab 3" className="w-tab-pane tab-pane-form">
                   <div className="w-form">
-                    <form id="email-form" name="email-form" data-name="Email Form">
+                    <form data-name="Email Form"
+                      id="email-form"
+                      name="email-form"
+                      onSubmit={this.props['action.createPlan.submitEmailForm']}>
                       <label className="label" htmlFor="name-3">
                         WHERE?
                       </label>
-                      <input id="name-3"
-                        type="text"
+                      <input data-name="Name 3"
+                        id="name-3"
+                        maxlength="256"
                         name="name-3"
-                        data-name="Name 3"
-                        className="w-input text-field" />
+                        type="text"
+                        className="w-input text-field"
+                        value={this.props['state.createPlan.name3']}
+                        onChange={this.props['action.createPlan.changeName3']} />
                       <label className="label" htmlFor="field-3">
                         WHEN?
                       </label>
-                      <select id="field-3"
+                      <select data-name="Field 3"
+                        id="field-3"
                         name="field-3"
                         required="required"
-                        data-name="Field 3"
-                        className="w-select select">
+                        className="w-select select"
+                        selected={this.props['state.createPlan.field3']}
+                        onChange={this.props['action.createPlan.selectField3']}>
                         <option value="11:00">
                           11:00
                         </option>
@@ -309,20 +355,24 @@ export default class CreatePlan extends React.Component {
                         </option>
                       </select>
                       <div className="w-checkbox w-clearfix checkbox-field">
-                        <input id="Place-Checkbox-10"
-                          type="checkbox"
+                        <input data-name="Place Checkbox 10"
+                          id="Place-Checkbox-10"
                           name="Place-Checkbox-10"
-                          data-name="Place Checkbox 10"
-                          className="w-checkbox-input checkbox-tick" />
+                          type="checkbox"
+                          className="w-checkbox-input checkbox-tick"
+                          checked={this.props['state.createPlan.placeCheckbox10']}
+                          onChange={this.props['action.createPlan.togglePlaceCheckbox10']} />
                         <div className="checkbox-click-div" />
                         <label className="w-form-label checkbox-text plan" htmlFor="Place-Checkbox">
                           Accepting additional orders?
                         </label>
                       </div>
-                      <input type="submit"
-                        value="Create a lunch plan"
-                        data-wait="Please wait..."
-                        className="w-button button-hollow fixed" />
+                      <div>
+                        <input data-wait="Please wait..."
+                          type="submit"
+                          value="Create a lunch plan"
+                          className="w-button button-hollow" />
+                      </div>
                     </form>
                     <div className="w-form-done">
                       <p>
@@ -345,3 +395,42 @@ export default class CreatePlan extends React.Component {
   }
 }
 ;
+const CreatePlanWithRedux = reduxConnect(
+  (state) => ({
+    'state.createPlan.name': state.createPlan.name,
+    'state.createPlan.field2': state.createPlan.field2,
+    'state.createPlan.placeCheckbox2': state.createPlan.placeCheckbox2,
+    'state.createPlan.placeCheckbox3': state.createPlan.placeCheckbox3,
+    'state.createPlan.placeCheckbox4': state.createPlan.placeCheckbox4,
+    'state.createPlan.placeCheckbox5': state.createPlan.placeCheckbox5,
+    'state.createPlan.name2': state.createPlan.name2,
+    'state.createPlan.field': state.createPlan.field,
+    'state.createPlan.placeCheckbox7': state.createPlan.placeCheckbox7,
+    'state.createPlan.placeCheckbox8': state.createPlan.placeCheckbox8,
+    'state.createPlan.placeCheckbox9': state.createPlan.placeCheckbox9,
+    'state.createPlan.name3': state.createPlan.name3,
+    'state.createPlan.field3': state.createPlan.field3,
+    'state.createPlan.placeCheckbox10': state.createPlan.placeCheckbox10
+  }),
+  {
+    'action.createPlan.submitEmailForm': action.createPlan.submitEmailForm,
+    'action.createPlan.changeName': action.createPlan.changeName,
+    'action.createPlan.selectField2': action.createPlan.selectField2,
+    'action.createPlan.togglePlaceCheckbox2': action.createPlan.togglePlaceCheckbox2,
+    'action.createPlan.togglePlaceCheckbox3': action.createPlan.togglePlaceCheckbox3,
+    'action.createPlan.togglePlaceCheckbox4': action.createPlan.togglePlaceCheckbox4,
+    'action.createPlan.togglePlaceCheckbox5': action.createPlan.togglePlaceCheckbox5,
+    'action.createPlan.submitEmailForm': action.createPlan.submitEmailForm,
+    'action.createPlan.changeName2': action.createPlan.changeName2,
+    'action.createPlan.selectField': action.createPlan.selectField,
+    'action.createPlan.togglePlaceCheckbox7': action.createPlan.togglePlaceCheckbox7,
+    'action.createPlan.togglePlaceCheckbox8': action.createPlan.togglePlaceCheckbox8,
+    'action.createPlan.togglePlaceCheckbox9': action.createPlan.togglePlaceCheckbox9,
+    'action.createPlan.submitEmailForm': action.createPlan.submitEmailForm,
+    'action.createPlan.changeName3': action.createPlan.changeName3,
+    'action.createPlan.selectField3': action.createPlan.selectField3,
+    'action.createPlan.togglePlaceCheckbox10': action.createPlan.togglePlaceCheckbox10
+  }
+)(CreatePlan);
+
+export default CreatePlanWithRedux;

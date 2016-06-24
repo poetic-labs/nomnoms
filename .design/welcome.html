@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created in Webflow. http://www.webflow.com-->
-<!-- Last Published: Thu Jun 23 2016 19:34:45 GMT+0000 (UTC) -->
+<!-- Last Published: Fri Jun 24 2016 15:30:46 GMT+0000 (UTC) -->
 <html data-wf-site="56b3d966564dce9470c750af" data-wf-page="56b3dd792433522011640689">
 <head>
   <meta charset="utf-8">
@@ -27,6 +27,14 @@
      -webkit-appearance: none;
      border-radius: 0px;
     }
+    .flex-scroll-content {
+      flex: 1; 
+      overflow-x: hidden;
+      overflow-y: scroll;
+      }
+    .flex-scroll-content {  
+      -webkit-overflow-scrolling: touch;
+      }
   </style>
 </head>
 <body>
@@ -37,8 +45,8 @@
   </div>
   <div class="w-section main-content-centered">
     <h1>Hope you’re hungry, Dalia!
-Let’s set your lunch preferences.</h1>
-  </div><a class="w-button button-hollow" href="onboarding-places.html">I was born ready</a>
+Let’s set your lunch preferences.</h1><a class="w-button button-hollow" href="onboarding-places.html">I was born ready</a>
+  </div>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   <script type="text/javascript" src="js/webflow.js"></script>
   <!--[if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->

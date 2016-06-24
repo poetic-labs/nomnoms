@@ -1,7 +1,8 @@
+/* eslint-disable */
 import React from 'react';
 import { Link } from 'param-store';
 
-export default class PlanDeets extends React.Component {
+class PlanDeets extends React.Component {
   render() {
     return (
       <div>
@@ -21,9 +22,9 @@ export default class PlanDeets extends React.Component {
           </div>
         </div>
         <div className="place-img">
-          <img width="375" src="images/chipotle-img.jpg" />
+          <img src="images/chipotle-img.jpg" width="375" />
           <Link href="onboarding-places.html" className="w-inline-block back-place" params={{  path: 'onboarding-places'}}>
-          <img width="14" src="images/back-white.png" />
+          <img src="images/back-white.png" width="14" />
           </Link>
         </div>
         <div className="place-info">
@@ -55,7 +56,7 @@ export default class PlanDeets extends React.Component {
             <div className="w-col w-col-3 w-col-tiny-3 deet-person-column">
               <div className="plan-person deets" />
               <div className="name">
-                Ekenedil...
+                Stephanie
               </div>
             </div>
             <div data-ix="show-modal" className="w-col w-col-3 w-col-tiny-3 add-yourself">
@@ -68,10 +69,12 @@ export default class PlanDeets extends React.Component {
         </div>
         <div className="the-deets">
           <h3>THE DEETS</h3>
-          <h2 className="secondary">Picking up<br />Not accepting additional orders</h2>
-        </div><a href="#" className="w-button button-hollow fixed">Edit plan</a>
+          <h2 className="secondary">Picking up<br />Not accepting additional orders</h2><a href="#" className="w-button button-hollow">Edit plan</a>
+        </div>
       </div>
       );
   }
 }
 ;
+
+export default PlanDeets;

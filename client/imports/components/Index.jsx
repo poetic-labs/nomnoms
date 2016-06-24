@@ -1,8 +1,8 @@
+/* eslint-disable */
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
-import { Link } from 'param-store';
+import ParamStore, { Link } from 'param-store';
 import Users from '../../../imports/collections/users/collection';
-import ParamStore from 'param-store';
 import $ from 'jquery';
 
 class Index extends React.Component {
@@ -87,28 +87,34 @@ class Index extends React.Component {
   render() {
     return (
       <div>
+        <div className="splash-bg" />
         <div className="w-section sign-in-section">
           <div className="logo">
-            <img src="images/logo.png" />
+            <img src="images/logo.png" width="326" />
           </div>
         </div>
-        <Link
-          href="#"
-          className="w-button button-hollow google"
-          onClick={() => this.handleGoogleLogin()}
-        >
-          Sign in with Google
-        </Link>
-        <Link
-          href="#"
-          className="w-button button-hollow slack"
-          onClick={() => this.handleSlackLogin()}
-        >
-          Sign in with Slack
-        </Link>
+        <div className="connect-div">
+          <Link
+            href="#"
+            className="w-button button google"
+            onClick={() => this.handleGoogleLogin()}
+          >
+            Sign in with Google
+          </Link>
+          <Link
+            href="#"
+            className="w-button button slack"
+            onClick={() => this.handleSlackLogin()}
+          >
+            Sign in with Slack
+          </Link>
+          <Link href="email-signup.html" className="w-button button email" params={{  path: 'email-signup'}}> Sign in with Email
+          </Link>
+        </div>
       </div>
-    );
+      );
   }
 }
+;
 
 export default Index;

@@ -70,6 +70,7 @@ html.w-mod-js *[data-ix="hide"] {
     padding-left: 0px;
   }
   h1 {
+    font-size: 20px;
     line-height: 30px;
   }
   h2 {
@@ -110,20 +111,20 @@ html.w-mod-js *[data-ix="hide"] {
     text-decoration: none;
   }
   .button-hollow {
+    position: static;
     display: block;
-    width: 96%;
+    width: 100%;
     margin-top: 24px;
-    margin-right: auto;
-    margin-left: auto;
     padding-top: 15px;
     padding-bottom: 15px;
     border: 2px solid #fea200;
     border-radius: 8px;
-    background-color: transparent;
+    background-color: #fff;
+    box-shadow: 0 -4px 15px 2px #fff;
     font-family: Montserrat, sans-serif;
     color: #fea200;
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 15px;
+    font-weight: 400;
     text-align: center;
     letter-spacing: -0.5px;
   }
@@ -137,21 +138,59 @@ html.w-mod-js *[data-ix="hide"] {
   .button-hollow.fixed {
     position: fixed;
     left: 0px;
+    right: 55px;
+    bottom: 0px;
+    z-index: 20;
+    display: block;
+    width: 100%;
+    margin: 20px 10px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    background-color: #fff;
+    box-shadow: 0 -11px 24px 6px #fff;
+    text-align: center;
+  }
+  .button-hollow.fixed-position {
+    position: fixed;
+    left: 0px;
     right: 0px;
     bottom: 0px;
     z-index: 20;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: #fff;
-    box-shadow: 0 -11px 24px 6px #fff;
   }
   .logo {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    max-width: none;
+    margin-right: auto;
     margin-bottom: 48px;
+    margin-left: auto;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-align: center;
   }
   .sign-in-section {
     padding-top: 100px;
     padding-right: 12px;
     padding-left: 12px;
+  }
+  .sign-in-section.centered {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100vh;
+    padding-top: 0px;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
   }
   .bg-img-div {
     position: relative;
@@ -197,7 +236,8 @@ html.w-mod-js *[data-ix="hide"] {
     margin-top: 10px;
     margin-bottom: 0px;
     padding-right: 0px;
-    font-size: 21px;
+    font-size: 20px;
+    line-height: 27px;
     text-align: center;
   }
   .giphy-div {
@@ -209,11 +249,10 @@ html.w-mod-js *[data-ix="hide"] {
   .giphy-div.welcome {
     height: 180px;
     margin-top: 0px;
-    background-image: -webkit-linear-gradient(270deg, rgba(30, 47, 71, .11), rgba(30, 47, 71, .8)), url('../images/giphy (9).gif');
-    background-image: linear-gradient(180deg, rgba(30, 47, 71, .11), rgba(30, 47, 71, .8)), url('../images/giphy (9).gif');
-    background-position: 0px 0px, 50% 50%;
-    background-size: auto, cover;
-    background-repeat: repeat, no-repeat;
+    background-image: url('../images/giphy (9).gif');
+    background-position: 50% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
   .checklist-item {
     border-style: none none solid;
@@ -224,14 +263,16 @@ html.w-mod-js *[data-ix="hide"] {
     float: left;
     font-family: Montserrat, sans-serif;
     color: #0f78ff;
-    font-size: 19px;
+    font-size: 17px;
     line-height: 44px;
-    font-weight: 700;
-    letter-spacing: -1px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
   }
   .checkbox-text.plan {
     float: left;
-    font-size: 16px;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
   }
   .checkbox-text.radio {
     display: none;
@@ -266,7 +307,7 @@ html.w-mod-js *[data-ix="hide"] {
     position: relative;
     width: 40px;
     height: 40px;
-    margin-right: 10px;
+    margin-right: 0px;
     float: right;
     border: 2px solid #0f78ff;
     border-radius: 50px;
@@ -307,9 +348,7 @@ html.w-mod-js *[data-ix="hide"] {
   }
   .checkbox-field {
     display: block;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
+    padding: 10px 0px;
     border-bottom: 1px solid #d8e4f6;
   }
   .checkbox-field:focus {
@@ -355,6 +394,8 @@ html.w-mod-js *[data-ix="hide"] {
   }
   .plans-blank {
     padding-top: 60px;
+    padding-right: 10px;
+    padding-left: 10px;
     text-align: center;
   }
   .transportation-picker {
@@ -473,7 +514,7 @@ html.w-mod-js *[data-ix="hide"] {
     font-family: Montserrat, sans-serif;
     color: #0f78ff;
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: -1px;
   }
   .welcome-image {
@@ -488,15 +529,16 @@ html.w-mod-js *[data-ix="hide"] {
     background-color: #798494;
     text-align: left;
   }
-  .option-group {
-    margin-bottom: 100px;
-    padding-right: 10px;
+  .flex-scroll-content {
+    display: block;
+    margin-bottom: 0px;
+    padding-right: 0px;
     padding-left: 0px;
   }
   .profile-icon {
     position: absolute;
+    top: 36px;
     right: 10px;
-    bottom: 25px;
     float: right;
   }
   .plan-option {
@@ -513,8 +555,11 @@ html.w-mod-js *[data-ix="hide"] {
   .restaurant {
     display: inline-block;
     margin-top: 0px;
-    font-size: 20px;
+    color: #3c444c;
+    font-size: 19px;
     line-height: 24px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
   }
   .plan-person {
     position: relative;
@@ -599,7 +644,7 @@ html.w-mod-js *[data-ix="hide"] {
     top: 20px;
   }
   .plan-wrapper {
-    margin-bottom: 70px;
+    margin-bottom: 0px;
   }
   .time-inline {
     display: inline-block;
@@ -623,7 +668,7 @@ html.w-mod-js *[data-ix="hide"] {
     font-family: Montserrat, sans-serif;
     color: #1e2f48;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 400;
     text-align: center;
     letter-spacing: -1px;
   }
@@ -634,22 +679,26 @@ html.w-mod-js *[data-ix="hide"] {
   .secondary {
     margin-top: 10px;
     color: #1e2f48;
+    font-weight: 400;
   }
   .deet-arrow {
     position: absolute;
     left: 10px;
     top: 0px;
     right: 10px;
-    bottom: 0px;
+    bottom: 2px;
     display: inline-block;
     margin-right: auto;
     margin-left: auto;
+    float: right;
   }
   .arrow {
     position: absolute;
-    top: 50px;
+    top: 24px;
     right: 0px;
     bottom: 0px;
+    max-width: none;
+    float: right;
   }
   .modal {
     position: fixed;
@@ -663,7 +712,7 @@ html.w-mod-js *[data-ix="hide"] {
   }
   .modal-window {
     position: relative;
-    height: 224px;
+    height: auto;
     margin-top: 100px;
     margin-right: 10px;
     margin-left: 10px;
@@ -723,7 +772,7 @@ html.w-mod-js *[data-ix="hide"] {
     text-align: center;
   }
   .button.google {
-    background-image: url('../images/google.svg');
+    background-image: url('../images/google_1.svg');
     background-position: 0px 50%;
     background-repeat: no-repeat;
   }
@@ -743,7 +792,71 @@ html.w-mod-js *[data-ix="hide"] {
     left: 0px;
     right: 0px;
     bottom: 0px;
+    z-index: 2;
     padding: 10px;
+  }
+  .fixed-position {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    -webkit-box-align: end;
+    -webkit-align-items: flex-end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+  }
+  .fixed-position.flexbox {
+    position: static;
+    overflow: hidden;
+    height: 100vh;
+    margin-bottom: 0px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+  }
+  .splash-bg {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 100vh;
+    background-image: url('../images/app-bg.png');
+    background-position: 0px 0px;
+    background-size: 369px;
+  }
+  .bottom-button {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+  .padding-all {
+    padding: 10px;
+  }
+  .close-icon {
+    position: relative;
+    left: 0px;
+    top: -30px;
+    right: 0px;
+    bottom: 0px;
+    float: left;
   }
 }
 

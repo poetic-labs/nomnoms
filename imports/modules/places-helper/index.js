@@ -36,10 +36,23 @@ export default class PlacesHelper {
 
     _.each(yelpPlaces.businesses, place => {
       const cleanPlace = {
+        location: {
+          address: place.location.address.join(' '),
+          city: place.location.city,
+          coordinate: {
+            longitude: place.location.coordinate.longitude,
+            latitude: place.location.coordinate.latitude,
+          },
+          countryCode: place.location.country_code,
+          crossStreets: place.location.cross_streets,
+          displayName: place.location.display_address.join(' '),
+          neighborhoods: place.location.neighborhoods,
+          postalCode: place.location.postal_code,
+          stateCode: place.location.state_code,
+        },
         name: place.name,
-        address: place.location.display_address.join(' '),
-        yelpUrl: place.url,
         photo: place.image_url,
+        yelpUrl: place.url,
       };
 
       this.places.push(cleanPlace);
@@ -49,13 +62,11 @@ export default class PlacesHelper {
   }
 
   placesData() {
-    _.each(this.houstonZipcodes, zipcode => {
-      this.yelp.search({ limit: 20, term: 'food', location: zipcode })
-      .then(data => this.buildYelpPlaces(data))
-      .catch(err => {
-        console.log('err: ', err);
-        return [];
-      });
+    this.yelp.search({ limit: 20, term: 'food', location: 77057 })
+    .then(data => this.buildYelpPlaces(data))
+    .catch(err => {
+      console.log('err: ', err);
+      return [];
     });
   }
 }
