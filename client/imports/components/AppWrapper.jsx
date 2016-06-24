@@ -45,6 +45,7 @@ Tracker.autorun(() => {
     Tracker.nonreactive(() => {
       subscribeAll([
         'places',
+        'plans',
       ], () => {
         subscriptionIsReady.set(true);
       });

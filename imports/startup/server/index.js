@@ -3,6 +3,9 @@ import '../../collections/users/collection-methods';
 import '../../collections/users/publish';
 import '../../collections/places/collection';
 import '../../collections/places/publish';
+import '../../collections/plans/collection';
+import '../../collections/plans/publish';
+import '../../collections/plans/collection-methods';
 import '../../seeds/places';
 import { Meteor } from 'meteor/meteor';
 

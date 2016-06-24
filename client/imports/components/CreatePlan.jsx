@@ -3,6 +3,8 @@ import React from 'react';
 import { Link } from 'param-store';
 import { connect as reduxConnect } from 'react-redux';
 import action from '../action-creators/index';
+import store from '../store';
+import PlanTypeButtons from './PlanTypeButtons';
 
 class CreatePlan extends React.Component {
   render() {
@@ -20,10 +22,7 @@ class CreatePlan extends React.Component {
         <div className="w-section">
           <div className="transportation-picker">
             <div data-duration-in="300" data-duration-out="100" className="w-tabs">
-              <div className="w-tab-menu tabs-menu">
-                <a data-w-tab="Tab 1" className="w-tab-link w--current w-inline-block tab-plan driving" /> <a data-w-tab="Tab 2" className="w-tab-link w-inline-block tab-plan"
-                /> <a data-w-tab="Tab 3" className="w-tab-link w-inline-block tab-plan delivery" />
-              </div>
+              <PlanTypeButtons />
               <div className="w-tab-content tabs-content">
                 <div data-w-tab="Tab 1" className="w-tab-pane w--tab-active tab-pane-form">
                   <div className="w-form">
