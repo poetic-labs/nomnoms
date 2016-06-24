@@ -59,7 +59,6 @@ class Index extends React.Component {
 
         $.getJSON(slackInfo, (slackData) => {
           if (slackData.error) {
-            console.log('error ', slackData.error);
             throw new Meteor.Error(
               'failed-slack-info-fetch',
               'Unable to login with Slack.'
