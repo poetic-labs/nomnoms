@@ -9,7 +9,7 @@ import moment from 'moment';
 class Today extends React.Component {
   render() {
     const { plans } = this.props;
- 
+
     return (
       <div>
         <div className="w-section title-section">
@@ -27,6 +27,7 @@ class Today extends React.Component {
                 <TodayPlanListItem
                   key={plan._id}
                   where={plan.where}
+                  planId={plan._id}
                   time={planTime}
                 />
               );

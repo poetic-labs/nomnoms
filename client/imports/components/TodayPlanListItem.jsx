@@ -3,7 +3,7 @@ import { Link } from 'param-store';
 
 class TodayPlanListItem extends React.Component {
   render() {
-    const { time, where } = this.props;
+    const { time, planId, where } = this.props;
 
     return (
           <div className="plan-option">
@@ -23,7 +23,7 @@ class TodayPlanListItem extends React.Component {
                 </div>
               </div>
             </div>
-            <Link href="plan-deets.html" className="w-inline-block deet-arrow" params={{  path: 'plan-deets'}}>
+            <Link href="plan-deets.html" className="w-inline-block deet-arrow" params={{ path: 'plan-deets', planId }}>
             <img src="images/deets-arrow.png" width="12" className="arrow" />
             </Link>
           </div>
@@ -33,6 +33,7 @@ class TodayPlanListItem extends React.Component {
 
 TodayPlanListItem.propTypes = {
   where: React.PropTypes.string,
+  planId: React.PropTypes.string,
   time: React.PropTypes.string,
 };
 
