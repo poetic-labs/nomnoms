@@ -1,10 +1,12 @@
 import React from 'react';
-import { connect as reduxConnect } from 'react-redux';
+import { createContainer } from 'meteor/react-meteor-data';
 import PlacesCheckbox from './PlacesCheckbox';
-import action from '../action-creators/index';
+import Places from '../../../imports/collections/places/collection';
 
 export default class OnboardingPlaces extends React.Component {
   render() {
+    const { places } = this.props;
+
     return (
       <div>
         <div className="w-section title-section">
@@ -19,7 +21,15 @@ export default class OnboardingPlaces extends React.Component {
             data-name="Email Form"
             data-redirect="/onboarding-car"
           >
-            <PlacesCheckbox />
+            {
+              places.map(place => (
+                <PlacesCheckbox
+                  key={place._id}
+                  name={place.name}
+                  placeId={place._id}
+                />
+                ))
+            }
             <input type="submit"
               value="Next"
               data-wait="Please wait..."
@@ -42,12 +52,17 @@ export default class OnboardingPlaces extends React.Component {
   }
 }
 
-const OnboardingPlacesWithRedux = reduxConnect(
-  (state) => ({
-    'state.onBoardingPlaces.checkboxOne': state.onBoardingPlaces.checkboxOne,
-  }),
-  {
-    'action.onboardingPlaces.checkboxOne': action.onboardingPlaces.checkboxOne,
-  }
-)(OnboardingPlaces);
+OnboardingPlaces.propTypes = {
+  places: React.PropTypes.array,
+};
 
+const OnboardingPlacesWithData = createContainer((props) => {
+  const places = Places.find().fetch();
+
+  return {
+    places,
+    ...props,
+  };
+}, OnboardingPlaces);
+
+export default OnboardingPlacesWithData;
