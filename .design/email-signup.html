@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created in Webflow. http://www.webflow.com-->
-<!-- Last Published: Thu Jun 23 2016 19:34:45 GMT+0000 (UTC) -->
+<!-- Last Published: Fri Jun 24 2016 15:30:46 GMT+0000 (UTC) -->
 <html data-wf-site="56b3d966564dce9470c750af" data-wf-page="56b3f682564dce9470c77422">
 <head>
   <meta charset="utf-8">
@@ -27,14 +27,22 @@
      -webkit-appearance: none;
      border-radius: 0px;
     }
+    .flex-scroll-content {
+      flex: 1; 
+      overflow-x: hidden;
+      overflow-y: scroll;
+      }
+    .flex-scroll-content {  
+      -webkit-overflow-scrolling: touch;
+      }
   </style>
 </head>
 <body>
   <div class="giphy-div welcome"></div>
   <div class="centered-div">
-    <h1>Sign up with email</h1>
+    <h1>Connect with email</h1>
   </div>
-  <div class="w-form email-signup">
+  <div class="w-form email-signup" id="email-signup-form">
     <form data-name="Email Form" id="email-form" name="email-form">
       <label class="label" for="Email-2">Email</label>
       <input class="w-input text-field" data-name="Email" id="Email-2" maxlength="256" name="Email" placeholder="Email" required="required" type="email">

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created in Webflow. http://www.webflow.com-->
-<!-- Last Published: Thu Jun 23 2016 19:34:45 GMT+0000 (UTC) -->
+<!-- Last Published: Fri Jun 24 2016 15:30:46 GMT+0000 (UTC) -->
 <html data-wf-site="56b3d966564dce9470c750af" data-wf-page="56b4aab4c21ca5cf4fcfae36">
 <head>
   <meta charset="utf-8">
@@ -27,6 +27,14 @@
      -webkit-appearance: none;
      border-radius: 0px;
     }
+    .flex-scroll-content {
+      flex: 1; 
+      overflow-x: hidden;
+      overflow-y: scroll;
+      }
+    .flex-scroll-content {  
+      -webkit-overflow-scrolling: touch;
+      }
   </style>
 </head>
 <body>
@@ -42,12 +50,12 @@
     <div class="transportation-picker">
       <div class="w-tabs" data-duration-in="300" data-duration-out="100">
         <div class="w-tab-menu tabs-menu">
-          <a class="w-tab-link w-inline-block tab-plan driving" data-w-tab="Tab 1"></a>
+          <a class="w-tab-link w--current w-inline-block tab-plan driving" data-w-tab="Tab 1"></a>
           <a class="w-tab-link w-inline-block tab-plan" data-w-tab="Tab 2"></a>
-          <a class="w-tab-link w--current w-inline-block tab-plan delivery" data-w-tab="Tab 3"></a>
+          <a class="w-tab-link w-inline-block tab-plan delivery" data-w-tab="Tab 3"></a>
         </div>
         <div class="w-tab-content tabs-content">
-          <div class="w-tab-pane tab-pane-form" data-w-tab="Tab 1">
+          <div class="w-tab-pane w--tab-active tab-pane-form" data-w-tab="Tab 1">
             <div class="w-form">
               <form data-name="Email Form" id="email-form" name="email-form">
                 <label class="label" for="name">WHERE?</label>
@@ -88,7 +96,9 @@
                   <div class="checkbox-click-div"></div>
                   <label class="w-form-label checkbox-text plan" for="Place-Checkbox">Dining in?</label>
                 </div>
-                <input class="w-button button-hollow fixed" data-wait="Please wait..." type="submit" value="Create a lunch plan">
+                <div>
+                  <input class="w-button button-hollow" data-wait="Please wait..." type="submit" value="Create a lunch plan">
+                </div>
               </form>
               <div class="w-form-done">
                 <p>Thank you! Your submission has been received!</p>
@@ -134,7 +144,9 @@
                   <div class="checkbox-click-div"></div>
                   <label class="w-form-label checkbox-text plan" for="Place-Checkbox">Dining in?</label>
                 </div>
-                <input class="w-button button-hollow fixed" data-wait="Please wait..." type="submit" value="Create a lunch plan">
+                <div>
+                  <input class="w-button button-hollow" data-wait="Please wait..." type="submit" value="Create a lunch plan">
+                </div>
               </form>
               <div class="w-form-done">
                 <p>Thank you! Your submission has been received!</p>
@@ -144,7 +156,7 @@
               </div>
             </div>
           </div>
-          <div class="w-tab-pane w--tab-active tab-pane-form" data-w-tab="Tab 3">
+          <div class="w-tab-pane tab-pane-form" data-w-tab="Tab 3">
             <div class="w-form">
               <form data-name="Email Form" id="email-form" name="email-form">
                 <label class="label" for="name-3">WHERE?</label>
@@ -170,7 +182,9 @@
                   <div class="checkbox-click-div"></div>
                   <label class="w-form-label checkbox-text plan" for="Place-Checkbox">Accepting additional orders?</label>
                 </div>
-                <input class="w-button button-hollow fixed" data-wait="Please wait..." type="submit" value="Create a lunch plan">
+                <div>
+                  <input class="w-button button-hollow" data-wait="Please wait..." type="submit" value="Create a lunch plan">
+                </div>
               </form>
               <div class="w-form-done">
                 <p>Thank you! Your submission has been received!</p>
