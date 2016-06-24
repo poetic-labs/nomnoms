@@ -1,8 +1,14 @@
 /* eslint-disable */
 import React from 'react';
 import { Link } from 'param-store';
+import ParamStore from 'param-store';
 
 class Account extends React.Component {
+  logout() {
+    Meteor.logout();
+    ParamStore.setAll({ path: '' });
+  }
+
   render() {
     return (
       <div>
@@ -30,7 +36,12 @@ class Account extends React.Component {
           </div>
         </div>
         <div className="padding-all">
-          <Link href="index.html" className="w-button button" params={{  path: 'index'}}> Log Out
+          <Link
+            href="index.html"
+            className="w-button button"
+            onClick={() => this.logout()}
+          >
+            Log Out
           </Link>
         </div>
       </div>
