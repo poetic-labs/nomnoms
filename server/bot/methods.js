@@ -38,12 +38,14 @@ Meteor.methods({
 
     const planList = {
       text: `${teamName}'s lunch plans!`,
+      response_type: 'in_channel',
       attachments: [
         {
           author_name: 'Jimmy Thigpen',
           text: 'Chipotle today @ 1:00pm',
           thumb_url: 'https://lh5.googleusercontent.com/-Hl_2HxoPXpg/AAAAAAAAAAI/AAAAAAAAI8c/vQAWdHgK1hc/s0-c-k-no-ns/photo.jpg',
           footer: 'by nomsnoms',
+
         },
         {
           author_name: 'Krisy Miller',

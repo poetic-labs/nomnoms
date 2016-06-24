@@ -528,6 +528,7 @@ html.w-mod-js *[data-ix="hide"] {
     border-radius: 100px;
     background-color: #798494;
     text-align: left;
+    overflow: hidden;
   }
   .flex-scroll-content {
     display: block;
