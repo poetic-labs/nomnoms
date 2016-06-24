@@ -21,7 +21,6 @@ const subscribeAll = (ids, callback) => {
 class AppWrapper extends React.Component {
   render() {
     const { loading, loggedIn } = this.props;
-    console.log(loading);
 
     if (loading) return <Loading />;
     if (!loggedIn) ParamStore.setAll({ path: '' });
