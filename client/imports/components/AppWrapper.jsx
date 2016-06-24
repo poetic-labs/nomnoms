@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 import ParamStore from 'param-store';
 import App from './App';
-import Loading from './Loading';
+import Splash from './Splash';
 import { Tracker } from 'meteor/tracker';
 
 const subscribeAll = (ids, callback) => {
@@ -22,7 +22,7 @@ class AppWrapper extends React.Component {
   render() {
     const { loading, loggedIn } = this.props;
 
-    if (loading) return <Loading />;
+    if (loading) return <Splash />;
     if (!loggedIn) ParamStore.setAll({ path: '' });
 
     return <App />;
