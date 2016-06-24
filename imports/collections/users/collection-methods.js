@@ -14,6 +14,10 @@ Users.methods = {
 
       const { email, given_name, family_name, picture } = user.services.google;
 
+      const currentEmail = _.has(Meteor.user, 'email') ? Meteor.user.email[0] : '';
+
+      const updateEmail = currentEmail === email ? {} : { $push: { emails: { address: email, verified: true } } };
+
       Users.update(user._id, {
         $set: {
           hasSignedInWithGoogle: true,
@@ -22,9 +26,7 @@ Users.methods = {
           'profile.lastName': family_name,
           'profile.photo': picture,
         },
-        $push: {
-          emails: { address: email, verified: true },
-        },
+        updateEmail,
       });
 
       return Users.findOne(user._id);
@@ -46,6 +48,10 @@ Users.methods = {
       const firstName = splitName.shift();
       const lastName = splitName.shift() || '';
 
+      const currentEmail = _.has(Meteor.user, 'email') ? Meteor.user.email[0] : '';
+
+      const updateEmail = currentEmail === email ? {} : { $push: { emails: { address: email, verified: true } } };
+
       Users.update(user._id, {
         $set: {
           hasSignedInWithSlack: true,
@@ -59,10 +65,9 @@ Users.methods = {
               userId: slackUserId,
             },
           },
+          'services.slack.id': slackUserId,
         },
-        $push: {
-          emails: { address: email, verified: true },
-        },
+        updateEmail,
       });
 
       return Users.findOne(user._id);
