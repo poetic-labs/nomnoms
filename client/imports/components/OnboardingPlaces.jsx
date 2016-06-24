@@ -2,7 +2,7 @@ import React from 'react';
 import { connect as reduxConnect } from 'react-redux';
 import { createContainer } from 'meteor/react-meteor-data';
 import action from '../action-creators/index';
-import PlacesCheckbox from './PlacesCheckbox';
+import OnboardingCheckbox from './OnboardingCheckbox';
 import Places from '../../../imports/collections/places/collection';
 
 export default class OnboardingPlaces extends React.Component {
@@ -25,7 +25,7 @@ export default class OnboardingPlaces extends React.Component {
           >
             {
               places.map(place => (
-                <PlacesCheckbox
+                <OnboardingCheckbox
                   key={place._id}
                   name={place.name}
                   placeId={place._id}

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect as reduxConnect } from 'react-redux';
 import action from '../action-creators/index';
 
-class PlacesCheckbox extends React.Component {
+class OnboardingCheckbox extends React.Component {
   render() {
     const { name, placeId } = this.props;
 
@@ -27,18 +27,18 @@ class PlacesCheckbox extends React.Component {
   }
 }
 
-PlacesCheckbox.propTypes = {
+OnboardingCheckbox.propTypes = {
   name: React.PropTypes.string.isRequired,
   placeId: React.PropTypes.string.isRequired,
 };
 
-const PlacesCheckboxWithRedux = reduxConnect(
+const OnboardingCheckboxWithRedux = reduxConnect(
   (state) => ({
     'state.onboardingPlaces.places': state.onboardingPlaces.places,
   }),
   {
     togglePlace: action.onboardingPlaces.togglePlace,
   }
-)(PlacesCheckbox);
+)(OnboardingCheckbox);
 
-export default PlacesCheckboxWithRedux;
+export default OnboardingCheckboxWithRedux;
